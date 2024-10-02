@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Header from '../components/Header';
 import useLenis from '../hooks/useLenis'; // フックのインポート
+import Script from 'next/script'; // next/script のインポート
 
 export default function Home() {
   useLenis(); // フックを呼び出してLenisを設定
@@ -28,7 +29,17 @@ export default function Home() {
       <footer style={{ padding: '30px' }}>
         <div>© 2024 KuROEu1</div>
       </footer>
-      <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis"></script>
+
+      {/* Lenisスクリプトの読み込み */}
+      <Script 
+          src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.5/bundled/lenis.js" 
+          strategy="lazyOnload" // スクリプトをページ読み込み後に実行
+          onLoad={() => {
+              // スクリプトが読み込まれた後に実行したいコード
+              console.log('Lenis script loaded successfully.');
+          }}
+      />
+
       <style jsx>{`
         .text-animation {
           display: flex;
@@ -45,7 +56,7 @@ export default function Home() {
 
         .rotated-u {
           transform: rotate(30deg);
-          transformorigin: 100% 100%;
+          transform-origin: 100% 100%;
         }
 
         .white {
