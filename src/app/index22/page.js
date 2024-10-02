@@ -4,6 +4,8 @@ import { useEffect } from 'react';
 import Head from 'next/head';
 import Header from '../../components/Header';
 
+import './index22.css'
+
 export default function Home() {
   // Lenisのスムーススクロール設定を直書き
   useEffect(() => {
@@ -64,50 +66,7 @@ export default function Home() {
         <div>© 2024 KuROEu1</div>
       </footer>
 
-      <style>
-        {`
-          .text-animation {
-            display: flex;
-            gap: 0px;
-            align-items: flex-end;
-          }
-
-          .char {
-            display: inline-block;
-            opacity: 0;
-            transform: translateY(50px);
-            animation: title-animation 0.8s cubic-bezier(0, 0.7, 0.3, 1) both;
-          }
-
-          .rotated-u {
-            transform: rotate(30deg);
-            transform-origin: 100% 100%;
-          }
-
-          .white {
-            color: white;
-          }
-
-          .char:nth-child(1) { animation-delay: 0.25s; }
-          .char:nth-child(2) { animation-delay: 0.3s; }
-          .char:nth-child(3) { animation-delay: 0.34s; }
-          .char:nth-child(4) { animation-delay: 0.37s; }
-          .char:nth-child(5) { animation-delay: 0.39s; }
-          .char:nth-child(6) { animation-delay: 0.9s; }
-          .char:nth-child(7) { animation-delay: 0.9s; }
-
-          @keyframes title-animation {
-            0% {
-              opacity: 0;
-              transform: translateY(50px);
-            }
-            100% {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-        `}
-      </style>
+      
     </>
   );
 }
