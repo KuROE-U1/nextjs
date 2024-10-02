@@ -63,7 +63,6 @@ export default function Home() {
       <footer style={{ padding: '30px' }}>
         <div>© 2024 KuROE_U1</div>
       </footer>
-      <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.5/bundled/lenis.js"></script>
       
       <style jsx>{`
         .text-animation {
