@@ -1,3 +1,13 @@
+.siteTitle {
+    font-size: 24px;
+    font-weight: bold;
+}
+.navList {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    font-weight: bold;
+}
 .text-animation {
     display: flex;
     gap: 0px;
@@ -25,7 +35,7 @@
 .char:nth-child(3) { animation-delay: 0.34s; }
 .char:nth-child(4) { animation-delay: 0.37s; }
 .char:nth-child(5) { animation-delay: 0.39s; }
-.char:nth-child(6) { animation-delay: 0.9s; }
+.char:nth-child(6) { animation-delay: 0.88s; }
 .char:nth-child(7) { animation-delay: 0.9s; }
 
 @keyframes title-animation {
@@ -38,3 +48,16 @@
         transform: translateY(0);
     }
 }
+
+.logo {
+    font-weight: bold;
+    font-size: 150px;
+    z-index: 2;
+    position: relative;
+}
+@media screen and (max-width: 960px)  {
+    .logo span{
+        font-size: calc(100vw / 7);
+    }
+}
+

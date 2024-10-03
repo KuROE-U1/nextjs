@@ -1,9 +1,9 @@
 "use client";
 
 import Head from 'next/head';
-import Header from '../components/Header';
+import Header from '../../components/Header';
 
-import './index22.css'
+import './index-a.css'
 
 export default function Home() {
     return (
@@ -15,8 +15,8 @@ export default function Home() {
         </Head>
         <Header />
         <main style={{ height: '200vh'}}>
-            <div style={{ height: '100vh', backgroundColor: '#ccc', display:'flex', alignItems:'center', justifyContent:'center', position:'relative', overflow:'hidden' }}>
-            <div className="text-animation logo">
+            <div style={{ height: '100vh', backgroundColor: '#ccc' }}>
+            <div className="text-animation" style={{ position: 'absolute', left: '50px', bottom: '50px', fontWeight: 'bold', fontSize: '60px' }}>
                 <span className="char">K</span>
                 <span className="char">u</span>
                 <span className="char">R</span>

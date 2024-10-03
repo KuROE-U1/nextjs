@@ -30,11 +30,10 @@ const styles = {
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '30px 50px',
-    // borderBottom: '1px solid',
     width: '100%',
     position: 'fixed',
     boxSizing: 'border-box',
-    height: '80px'
+    zindex: '1000',
   },
   siteTitle: {
     fontSize: '24px',
@@ -44,6 +43,7 @@ const styles = {
     display: 'flex',
     gap: '20px',
     listStyle: 'none',
+    fontWeight:'bold',
   },
 };
 
