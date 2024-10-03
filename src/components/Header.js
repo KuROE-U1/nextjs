@@ -3,7 +3,7 @@ import Link from 'next/link';
 const Header = () => {
   return (
     <header style={styles.header}>
-      <div style={styles.siteTitle}><Link href="index22">サイトタイトル</Link></div>
+      <div style={styles.siteTitle}><Link href="index">KuROEu1</Link></div>
       <nav>
         <ul style={styles.navList}>
           <li>
