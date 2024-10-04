@@ -1,7 +1,7 @@
 "use client";
 
 import Head from 'next/head';
-import Header from '../../components/header';
+import Header from './../components/Header';
 import './contact.css';
 
 export default function Contact() {
