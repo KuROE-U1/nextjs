@@ -2,7 +2,6 @@
 
 import Head from 'next/head';
 import Header from '../../components/header';
-import Footer from '../../components/footer';
 import './about.css';
 
 export default function About() {
@@ -24,7 +23,9 @@ export default function About() {
             </div>
             </div>
         </main>
-        <Footer/>
+        <footer style={{ padding: '30px' }}>
+            <div>© 2024 KuROE_U1</div>
+        </footer>
         </>
     );
 }

@@ -2,7 +2,6 @@
 
 import Head from 'next/head';
 import Header from '../components/header';
-import Footer from '../components/footer';
 
 import './index.css'
 
@@ -28,7 +27,9 @@ export default function Home() {
             </div>
             </div>
         </main>
-        <Footer />
+        <footer style={{ padding: '30px' }}>
+            <div>© 2024 KuROEu1</div>
+        </footer>
         
         </>
     );

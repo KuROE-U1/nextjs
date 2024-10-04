@@ -2,7 +2,6 @@
 
 import Head from 'next/head';
 import Header from '../../components/header';
-import Footer from '../../components/footer';
 import './contact.css';
 
 export default function Contact() {
@@ -24,7 +23,9 @@ export default function Contact() {
             </div>
             </div>
         </main>
-        <Footer/>
+        <footer style={{ padding: '30px' }}>
+            <div>© 2024 KuROE_U1</div>
+        </footer>
         </>
     );
 }
