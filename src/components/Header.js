@@ -1,50 +1,27 @@
 import Link from 'next/link';
+import './header.css'
 
 const Header = () => {
-  return (
-    <header style={styles.header}>
-      <div style={styles.siteTitle}><Link href="index">KuROEu1</Link></div>
-      <nav>
-        <ul style={styles.navList}>
-          <li>
-            <Link href="#contact">Contact</Link>
-          </li>
-          <li>
-            <Link href="#works">Works</Link>
-          </li>
-          <li>
-            <Link href="#portfolio">Portfolio</Link>
-          </li>
-          <li>
-            <Link href="about">about</Link>
-          </li>
-        </ul>
-      </nav>
-    </header>
-  );
-};
-
-const styles = {
-  header: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '30px 50px',
-    width: '100%',
-    position: 'fixed',
-    boxSizing: 'border-box',
-    zindex: '1000',
-  },
-  siteTitle: {
-    fontSize: '24px',
-    fontWeight: 'bold',
-  },
-  navList: {
-    display: 'flex',
-    gap: '20px',
-    listStyle: 'none',
-    fontWeight:'bold',
-  },
+    return (
+        <header className="header">
+            <div className="siteTitle">
+                <Link href="/">KuROEu1</Link>
+            </div>
+            <nav>
+                <ul className="navList">
+                    <li>
+                        <Link href="works">Works</Link>
+                    </li>
+                    <li>
+                        <Link href="about">About</Link>
+                    </li>
+                    <li>
+                        <Link href="contact">Contact</Link>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+    );
 };
 
 export default Header;

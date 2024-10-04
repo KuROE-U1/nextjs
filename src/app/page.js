@@ -1,17 +1,18 @@
 "use client";
 
 import Head from 'next/head';
-import Header from '../components/Header';
+import Header from '../components/header';
+import Footer from '../components/footer';
 
-import './index22.css'
+import './index.css'
 
 export default function Home() {
     return (
         <>
         
         <Head>
-            <title>シンプルなヘッダー</title>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>index</title>
+            <meta name="description" content="index" />
         </Head>
         <Header />
         <main style={{ height: '200vh'}}>
@@ -27,9 +28,7 @@ export default function Home() {
             </div>
             </div>
         </main>
-        <footer style={{ padding: '30px' }}>
-            <div>© 2024 KuROEu1</div>
-        </footer>
+        <Footer />
         
         </>
     );
