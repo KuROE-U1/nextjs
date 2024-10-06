@@ -1,15 +1,16 @@
-a {
-    color: white;
-}
 header {
     display: flex;
-    justify-Content: space-between;
-    align-Items: center;
+    justify-content: space-between;
+    align-items: center;
     padding: 30px 50px;
     width: 100%;
     position: fixed;
-    box-Sizing: border-box;
-    zindex: 1000;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+header a {
+    color: white;
 }
 
 .siteTitle {
@@ -19,6 +20,6 @@ header {
 .navList {
     display: flex;
     gap: 20px;
-    list-Style: none;
-    font-Weight:bold;
+    list-style: none;
+    font-weight:bold;
 }

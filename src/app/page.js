@@ -1,36 +1,51 @@
 "use client";
 
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
-import Header from '../components/Header';
 
-import './index.css'
+import './index.css';
 
 export default function Home() {
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        // コンポーネントがマウントされた後、すぐに loading ステータスを false に設定
+        setLoading(false);
+    }, []);
+
+    if (loading) {
+        return (
+            <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                Loading...
+            </div>
+        );
+    }
+
     return (
         <>
-        
-        <Head>
-            <title>index</title>
-            <meta name="description" content="index" />
-        </Head>
-        <Header />
-        <main style={{ height: '200vh'}}>
-            <div style={{ height: '100vh', backgroundColor: '#ccc', display:'flex', alignItems:'center', justifyContent:'center', position:'relative', overflow:'hidden' }}>
-            <div className="text-animation logo">
-                <span className="char">K</span>
-                <span className="char">u</span>
-                <span className="char">R</span>
-                <span className="char">O</span>
-                <span className="char">E</span>
-                <span className="char white"><div className=''>u</div></span>
-                <span className="char white">1</span>
-            </div>
-            </div>
-        </main>
-        <footer style={{ padding: '30px' }}>
-            <div>© 2024 KuROEu1</div>
-        </footer>
-        
+            <Head>
+                <title>index</title>
+                <meta name="description" content="index" />
+            </Head>
+            <main style={{ height: '200vh' }}>
+                <div style={{ height: '100vh', backgroundColor: '#ccc', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
+                    <div style={{ position: "absolute", top: "-5px", left: "-5px", right: "-5px", bottom: "-5px"}}>
+                        <video autoPlay loop muted playsInline style={{ width: "calc(100% + 10px)", height: "calc(100% + 10px)", filter: 'blur(6px)', objectFit:'cover' }}>
+                            <source src="/videos/1.mp4" type="video/mp4"  />
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div className="text-animation logo">
+                        <span className="char">K</span>
+                        <span className="char">u</span>
+                        <span className="char">R</span>
+                        <span className="char">O</span>
+                        <span className="char">E</span>
+                        <span className="char">u</span>
+                        <span className="char">1</span>
+                    </div>
+                </div>
+            </main>
         </>
     );
 }

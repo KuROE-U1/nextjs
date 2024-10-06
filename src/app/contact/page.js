@@ -1,7 +1,6 @@
 "use client";
 
 import Head from 'next/head';
-import Header from '../../components/Header';
 import './contact.css';
 
 export default function Contact() {
@@ -11,7 +10,6 @@ export default function Contact() {
             <title>contact</title>
             <meta name="description" content="contact" />
         </Head>
-        <Header />
         <main style={{ height: '200vh' }}>
             <div style={{ height: '100vh', backgroundColor: '#ccc' }}>
             <div className="text-animation">
@@ -23,9 +21,6 @@ export default function Contact() {
             </div>
             </div>
         </main>
-        <footer style={{ padding: '30px' }}>
-            <div>© 2024 KuROE_U1</div>
-        </footer>
         </>
     );
 }

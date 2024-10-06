@@ -16,9 +16,6 @@
     transform-origin: 100% 100%;
 }
 
-.white {
-    color: white;
-}
 
 .char:nth-child(1) { animation-delay: 0.25s; }
 .char:nth-child(2) { animation-delay: 0.3s; }
@@ -44,6 +41,7 @@
     font-size: 150px;
     z-index: 2;
     position: relative;
+    color: #FFF;
 }
 @media screen and (max-width: 960px)  {
     .logo span{
