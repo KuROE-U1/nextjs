@@ -26,3 +26,7 @@
         transform: translateY(0);
     }
 }
+
+.logo {
+    font-size: 100px;
+}
