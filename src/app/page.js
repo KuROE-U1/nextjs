@@ -29,9 +29,6 @@ export default function Home() {
             </Head>
             <main style={{ height: '200vh' }}>
                 <div style={{ height: '100vh', backgroundColor: '#ccc', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
-                    {/* <div style={{ position: "absolute", top: "-5px", left: "-5px", right: "-5px", bottom: "-5px"}}>
-                        <video src="./videos/1.mp4" autoPlay loop muted playsInline style={{ width: "calc(100% + 10px)", height: "calc(100% + 10px)", filter: 'blur(6px)', objectFit:'cover' }}></video>
-                    </div> */}
                     <div className="text-animation logo">
                         <span className="char">K</span>
                         <span className="char">u</span>
