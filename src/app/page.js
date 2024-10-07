@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import Head from 'next/head';
+import Image from 'next/image';
 
 import './index.css';
 
@@ -44,7 +45,7 @@ export default function Home() {
             <main style={{ height: '200vh' }}>
                 <div style={{ height: '100vh', backgroundColor: '#ccc', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
                     <div style={{ position: "absolute", top: "-5px", left: "-5px", right: "-5px", bottom: "-5px"}}>
-                        <img src="./images/1.png" autoPlay loop muted playsInline style={{ width: "calc(100% + 10px)", height: "calc(100% + 10px)", filter: 'blur(6px)', objectFit:'cover' }}></img>
+                        {/* <Image src="/images/1.png" style={{ width: "calc(100% + 10px)", height: "calc(100% + 10px)", filter: 'blur(6px)', objectFit:'cover' }} /> */}
                     </div>
                     <div className="text-animation logo">
                         <span className="char">K</span>
