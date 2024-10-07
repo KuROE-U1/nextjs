@@ -28,5 +28,9 @@
 }
 
 .logo {
+    font-weight: bold;
     font-size: 100px;
+    z-index: 2;
+    position: relative;
+    color: #FFF;
 }
