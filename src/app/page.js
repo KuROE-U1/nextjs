@@ -27,19 +27,24 @@ export default function Home() {
                 <title>index</title>
                 <meta name="description" content="index" />
             </Head>
-            <main style={{ height: '200vh' }}>
-                <div style={{ height: '100vh', backgroundColor: '#ccc', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
-                    <div className="text-animation logo">
-                        <span className="char">K</span>
-                        <span className="char">u</span>
-                        <span className="char">R</span>
-                        <span className="char">O</span>
-                        <span className="char">E</span>
-                        <span className="char">u</span>
-                        <span className="char">1</span>
+            <article>
+                <section id="top">
+                    <div style={{ height: '100vh', backgroundColor: '#ccc', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
+                        <div className="text-animation logo">
+                            <span className="char">K</span>
+                            <span className="char">u</span>
+                            <span className="char">R</span>
+                            <span className="char">O</span>
+                            <span className="char">E</span>
+                            <span className="char">u</span>
+                            <span className="char">1</span>
+                        </div>
                     </div>
-                </div>
-            </main>
+                </section>
+                <section id="works">
+
+                </section>
+            </article>
         </>
     );
 }

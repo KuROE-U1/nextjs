@@ -20,6 +20,11 @@ const Header = () => {
                     </li>
                 </ul>
             </nav>
+            <div class="hamburger hamburger--collapse">
+                <div class="hamburger-box">
+                    <div class="hamburger-inner"></div>
+                </div>
+            </div>
         </header>
     );
 };
