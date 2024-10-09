@@ -36,7 +36,7 @@ export default function Home() {
                             <span className="char">.</span>
                             <span className="char">H</span>
                             <video 
-  src="/videos/1.mp4" 
+  src="https://github.com/KuROE-U1/nextjs/blob/main/public/videos/1.mp4?raw=true" 
   width="320" 
   height="240" 
   autoPlay 
