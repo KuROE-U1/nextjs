@@ -35,7 +35,15 @@ export default function Home() {
                             <span className="char">M</span>
                             <span className="char">.</span>
                             <span className="char">H</span>
-                            <Image src="/images/1.png" alt="猫は最高に可愛い" width={100} height={100} />
+                            <video 
+  src="/videos/1.mp4" 
+  width="320" 
+  height="240" 
+  autoPlay 
+  muted 
+  loop 
+  playsInline
+/>
                         </div>
                     </div>
                 </section>
