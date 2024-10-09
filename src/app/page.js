@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
-import Image from 'next/image';
 
 import './index.css';
 
@@ -32,22 +31,26 @@ export default function Home() {
                 <section id="top">
                     <div style={{ height: '100vh', backgroundColor: '#ccc', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
                         <div className="text-animation logo">
-                            <span className="char">M</span>
-                            <span className="char">.</span>
-                            <span className="char">H</span>
-                            <video 
-  src="https://github.com/KuROE-U1/nextjs/blob/main/public/videos/1.mp4?raw=true" 
-  width="320" 
-  height="240" 
-  autoPlay 
-  muted 
-  loop 
-  playsInline
-/>
+                            <span className="char">K</span>
+                            <span className="char">u</span>
+                            <span className="char">R</span>
+                            <span className="char">O</span>
+                            <span className="char">E</span>
+                            <span className="char">u</span>
+                            <span className="char">1</span>
                         </div>
                     </div>
                 </section>
+
                 <section id="works">
+
+                </section>
+
+                <section id="about">
+
+                </section>
+                
+                <section id="contact">
 
                 </section>
             </article>
