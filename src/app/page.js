@@ -35,7 +35,7 @@ export default function Home() {
                             <span className="char">M</span>
                             <span className="char">.</span>
                             <span className="char">H</span>
-                            <Image src="/images/1.png" alt="猫は最高に可愛い" width={100} height={100} />
+                            <Image src="https://github.com/KuROE-U1/nextjs/blob/main/public/images/1.png?raw=true" alt="猫は最高に可愛い" width={100} height={100} />
                         </div>
                     </div>
                 </section>
