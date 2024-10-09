@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
+import Image from 'next/image';
 
 import './index.css';
 
@@ -31,13 +32,10 @@ export default function Home() {
                 <section id="top">
                     <div style={{ height: '100vh', backgroundColor: '#ccc', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
                         <div className="text-animation logo">
-                            <span className="char">K</span>
-                            <span className="char">u</span>
-                            <span className="char">R</span>
-                            <span className="char">O</span>
-                            <span className="char">E</span>
-                            <span className="char">u</span>
-                            <span className="char">1</span>
+                            <span className="char">M</span>
+                            <span className="char">.</span>
+                            <span className="char">H</span>
+                            <Image src="/images/1.png" alt="猫は最高に可愛い" width={100} height={100} />
                         </div>
                     </div>
                 </section>
