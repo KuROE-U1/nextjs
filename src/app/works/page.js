@@ -13,7 +13,7 @@ export default function Works() {
         <main style={{ height: '200vh' }}>
             <div style={{ height: '100vh', backgroundColor: '#ccc', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
                 <div className="text-animation logo">
-                    <span className="char">w</span>
+                    <span className="char">W</span>
                     <span className="char">o</span>
                     <span className="char">r</span>
                     <span className="char">k</span>

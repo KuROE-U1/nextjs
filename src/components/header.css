@@ -9,8 +9,8 @@ header {
     z-index: 1000;
 }
 
-@media screen and (max-width: 960px)  {
-    header{
+@media screen and (max-width: 960px) {
+    header {
         padding: 20px 20px;
     }
 }
@@ -23,18 +23,15 @@ header a {
     font-size: 24px;
     font-weight: bold;
 }
+
 .navList {
     display: flex;
     gap: 20px;
     list-style: none;
-    font-weight:bold;
+    font-weight: bold;
 }
 
-
-
-/*   */
 .hamburger {
-    /* padding: 10px 0px; */
     display: inline-block;
     cursor: pointer;
     transition-property: opacity, filter;
@@ -49,58 +46,68 @@ header a {
     overflow: visible;
     display: none;
 }
-@media screen and (max-width: 960px)  {
-    .hamburger{
-        display:block;
+
+@media screen and (max-width: 960px) {
+    .hamburger {
+        display: block;
     }
 }
+
 .hamburger:hover {
-    opacity: 0.7; 
+    opacity: 0.7;
 }
+
 .hamburger.is-active:hover {
-    opacity: 0.7; 
+    opacity: 0.7;
 }
+
 .hamburger.is-active .hamburger-inner,
 .hamburger.is-active .hamburger-inner::before,
 .hamburger.is-active .hamburger-inner::after {
-    background-color: #000; }
+    background-color: #000;
+}
 
 .hamburger-box {
     width: 30px;
     height: 24px;
     display: inline-block;
-    position: relative; 
+    position: relative;
 }
 
 .hamburger-inner {
     display: block;
     top: 50%;
-    margin-top: -2px; 
+    margin-top: -1px;
+    width: 30px; /* 中央の線の幅を20pxに */
+    left: 0; /* 左揃え */
 }
+
 .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
-    width: 30px;
     height: 2px;
     background-color: #000;
     border-radius: 10px;
     position: absolute;
     transition-property: transform;
     transition-duration: 0.15s;
-    transition-timing-function: ease; 
+    transition-timing-function: ease;
 }
+
 .hamburger-inner::before, .hamburger-inner::after {
     content: "";
-    display: block; 
+    display: block;
 }
+
 .hamburger-inner::before {
-    top: -10px;
+    top: -8px; /* 上の線と中央の線の間隔を調整 */
+    width: 30px; /* 一番上の線の幅を10pxに */
+    left: 0; /* 左揃え */
 }
 
 .hamburger-inner::after {
-    bottom: -10px;
-    width: 30px; /* 一番下の棒の幅を短く */
-    right: 0; /* 右揃え */
+    bottom: -8px; /* 下の線と中央の線の間隔を調整 */
+    width: 30px; /* 一番下の線の幅を30pxに */
+    left: 0; /* 左揃え */
 }
-
 
 .hamburger--collapse .hamburger-inner {
     top: auto;
@@ -109,10 +116,12 @@ header a {
     transition-delay: 0.13s;
     transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
+
 .hamburger--collapse .hamburger-inner::after {
-    top: -20px;
+    top: -16px;
     transition: top 0.2s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1), opacity 0.1s linear;
 }
+
 .hamburger--collapse .hamburger-inner::before {
     transition: top 0.12s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1), transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
@@ -122,17 +131,24 @@ header a {
     transition-delay: 0.22s;
     transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
 }
+
 .hamburger--collapse.is-active .hamburger-inner::after {
     top: 0;
     opacity: 0;
     transition: top 0.2s cubic-bezier(0.33333, 0, 0.66667, 0.33333), opacity 0.1s 0.22s linear;
 }
+
 .hamburger--collapse.is-active .hamburger-inner::before {
     top: 0;
-    width: 30px;
     transform: rotate(-90deg);
-    transition: top 0.1s 0.16s cubic-bezier(0.33333, 0, 0.66667, 0.33333), transform 0.13s 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
-    
+    transition: 
+        top 0.1s 0.16s cubic-bezier(0.33333, 0, 0.66667, 0.33333), transform 0.13s 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.hamburger--collapse.is-active .hamburger-inner,
+.hamburger--collapse.is-active .hamburger-inner::before,
+.hamburger--collapse.is-active .hamburger-inner::after {
+    width: 30px; /* 開いた状態では全ての線を30pxにする */
 }
 
 .fullscreenMenu {
@@ -141,17 +157,16 @@ header a {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 1);
     z-index: 10;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .fullscreenMenu ul {
     list-style: none;
     padding: 0;
-    text-align: center;
 }
 
 .fullscreenMenu li {
