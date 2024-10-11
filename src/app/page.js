@@ -1,6 +1,10 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import Head from 'next/head';
+import Video from 'next-video';
+
+import './index.css';
 
 export default function Home() {
     const [loading, setLoading] = useState(true);
@@ -18,23 +22,39 @@ export default function Home() {
     }
 
     return (
-        <article>
-            <section id="top">
-                <div style={{ height: '100vh', backgroundColor: '#ccc', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
-                    <video src="./videos/1.mp4" controls autoPlay muted playsInline />
-                    <div className="text-animation logo">
-                        <span className="char">K</span>
-                        <span className="char">u</span>
-                        <span className="char">R</span>
-                        <span className="char">O</span>
-                        <span className="char">E</span>
-                        <span className="char">u</span>
-                        <span className="char">1</span>
+        <>
+            <Head>
+                <title>index</title>
+                <meta name="description" content="index" />
+            </Head>
+            <article>
+                <section id="top">
+                    <div style={{ height: '100vh', backgroundColor: '#ccc', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
+                        <video src="videos/1.mp4"  autoPlay muted controls/>
+                        <div className="text-animation logo">
+                            <span className="char">K</span>
+                            <span className="char">u</span>
+                            <span className="char">R</span>
+                            <span className="char">O</span>
+                            <span className="char">E</span>
+                            <span className="char">u</span>
+                            <span className="char">1</span>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            {/* 他のセクション... */}
-        </article>
+                <section id="works">
+                    <div style={{display:'flex', justifyContent:'center'}}><h2>Works</h2></div>
+                </section>
+
+                <section id="about">
+                    <h2>About</h2>
+                </section>
+                
+                <section id="contact">
+                    <h2>Contact</h2>
+                </section>
+            </article>
+        </>
     );
 }
