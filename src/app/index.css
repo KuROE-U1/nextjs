@@ -48,3 +48,20 @@
         font-size: calc(100vw / 7);
     }
 }
+
+.container2 {
+    z-index:2000;
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(3, 10px); /* 3列のグリッド、それぞれの幅は100px */
+    grid-gap: 10px; /* グリッド間の隙間 */
+    left: 0;
+  }
+  
+  .circle {
+    width: 10px; /* 丸の直径 */
+    height: 10px; /* 丸の直径 */
+    background-color: #3498db; /* 丸の色 */
+    border-radius: 50%; /* 丸を描画するための丸い角 */
+  }
+  
