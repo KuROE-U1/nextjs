@@ -30,7 +30,7 @@ export default function Home() {
                 <section id="top">
                     <div style={{ height: '100vh', backgroundColor: '#ccc', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
                     <video width="320" height="240" controls preload="none">
-      <source src="/videos/1.mp4" type="video/mp4" />
+      <source src="https://github.com/KuROE-U1/nextjs/raw/c0810de61bc80dc5de56afd5d701316780b35cc4/public/videos/1.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
                         <div className="text-animation logo">
