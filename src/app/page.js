@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
-import Video from 'next-video';
 
 import './index.css';
 
@@ -30,7 +29,10 @@ export default function Home() {
             <article>
                 <section id="top">
                     <div style={{ height: '100vh', backgroundColor: '#ccc', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
-                        <video src="videos/1.mp4"  autoPlay muted controls/>
+                    <video width="320" height="240" controls preload="none">
+      <source src="/videos/1.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
                         <div className="text-animation logo">
                             <span className="char">K</span>
                             <span className="char">u</span>
