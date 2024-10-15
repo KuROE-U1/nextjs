@@ -52,21 +52,7 @@ export default function Home() {
                                 <div key={index} className="circle"></div>
                             ))}
                         </div>
-                        <video 
-                            width="320" 
-                            height="240" 
-                            autoPlay 
-                            loop 
-                            muted 
-                            playsInline
-                            style={{ 
-                                objectFit: 'cover',
-                                width: '100%',
-                                height: '100%',
-                                position: 'absolute',
-                                filter: 'blur(5px) grayscale(50%)'
-                            }}
-                        >
+                        <video width="320" height="240" autoPlay loop muted playsInline style={{objectFit: 'cover', width: '100%', height: '100%', position: 'absolute', filter: 'blur(5px) grayscale(50%)' }} >
                             <source src="https://github.com/KuROE-U1/nextjs/raw/c0810de61bc80dc5de56afd5d701316780b35cc4/public/videos/1.mp4" type="video/mp4" />
                             Your browser does not support the video tag.
                         </video>
@@ -81,8 +67,16 @@ export default function Home() {
                         </div>
                     </div>
                 </section>
-
-                {/* Other sections remain unchanged */}
+                <section id="works" >
+                    <div style={{ fontSize: '100px', display: 'flex', justifyContent: 'center' }}>Works</div>
+                </section>
+                <section id="about">
+                    <div style={{ fontSize: '100px', display: 'flex', justifyContent: 'center' }} >About</div>
+                </section>
+                <section id="contact">
+                    <div style={{ fontSize: '100px', display: 'flex', justifyContent: 'center' }}>Contact</div>
+                    
+                </section>
             </article>
         </>
     );
