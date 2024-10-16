@@ -84,7 +84,7 @@ header a {
 
 .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
     height: 2px;
-    background-color: #000;
+    background-color:aqua;
     border-radius: 10px;
     position: absolute;
     transition-property: transform;
@@ -98,12 +98,14 @@ header a {
 }
 
 .hamburger-inner::before {
+    background-color:aqua;
     top: -8px; /* 上の線と中央の線の間隔を調整 */
     width: 30px; /* 一番上の線の幅を10pxに */
     left: 0; /* 左揃え */
 }
 
 .hamburger-inner::after {
+    background-color:aqua;
     bottom: -8px; /* 下の線と中央の線の間隔を調整 */
     width: 30px; /* 一番下の線の幅を30pxに */
     left: 0; /* 左揃え */

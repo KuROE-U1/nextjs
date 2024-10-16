@@ -82,17 +82,21 @@ const Header = () => {
         }
     };
 
+    const closeMenu = () => {
+        setIsMenuOpen(false);
+    };
+
     return (
         <>
             <header className="white">
                 <div className="siteTitle">
-                    <Link href="/">Homeまたはアイコン</Link>
+                    <Link href="/">KuROEu1</Link>
                 </div>
                 <nav>
                     <ul className="navList">
-                        <li><Link href="/works">Works</Link></li>
-                        <li><Link href="/about">About</Link></li>
-                        <li><Link href="/contact">Contact</Link></li>
+                        <li><Link href="/works" onClick={closeMenu}>Works</Link></li>
+                        <li><Link href="/about" onClick={closeMenu}>About</Link></li>
+                        <li><Link href="/contact" onClick={closeMenu}>Contact</Link></li>
                     </ul>
                 </nav>
                 <div className={`hamburger hamburger--collapse ${isMenuOpen ? 'is-active' : ''}`}>
@@ -103,9 +107,9 @@ const Header = () => {
             </header>
             <div ref={menuRef} className="fullscreenMenu" style={{ visibility: 'hidden' }}>
                 <ul>
-                    <li><Link href="/works">Works</Link></li>
-                    <li><Link href="/about">About</Link></li>
-                    <li><Link href="/contact">Contact</Link></li>
+                    <li><Link href="/works" onClick={closeMenu}>Works</Link></li>
+                    <li><Link href="/about" onClick={closeMenu}>About</Link></li>
+                    <li><Link href="/contact" onClick={closeMenu}>Contact</Link></li>
                 </ul>
             </div>
         </>
