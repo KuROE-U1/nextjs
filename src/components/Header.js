@@ -43,48 +43,56 @@ const Header = () => {
     }, [isMenuOpen, scrollPosition]);
 
     useEffect(() => {
-        const script = document.createElement('script');
-        script.src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js";
-        script.async = true;
+        if (!window.gsap) {
+            const script = document.createElement('script');
+            script.src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js";
+            script.async = true;
 
-        script.onload = () => {
-            const gsap = window.gsap;
+            script.onload = () => {
+                toggleMenuAnimation();
+            };
 
-            if (isMenuOpen) {
-                gsap.fromTo(menuRef.current, 
-                    { y: '-100%', display: 'flex' }, 
-                    { y: '0%', duration: 0.5, ease: 'power2.out' }
-                );
-            } else {
-                gsap.to(menuRef.current, {
-                    y: '-100%',
-                    duration: 0.5,
-                    ease: 'power2.in',
-                    onComplete: () => {
-                        menuRef.current.style.display = 'none';
-                    }
-                });
-            }
-        };
+            document.body.appendChild(script);
 
-        document.body.appendChild(script);
-
-        return () => {
-            document.body.removeChild(script);
-        };
+            return () => {
+                document.body.removeChild(script);
+            };
+        } else {
+            toggleMenuAnimation();
+        }
     }, [isMenuOpen]);
+
+    const toggleMenuAnimation = () => {
+        const gsap = window.gsap;
+
+        if (isMenuOpen) {
+            gsap.fromTo(menuRef.current, 
+                { y: '-100%', visibility: 'visible' }, 
+                { y: '0%', duration: 0.5, ease: 'power2.out' }
+            );
+        } else {
+            gsap.to(menuRef.current, {
+                y: '-100%',
+                duration: 0.5,
+                ease: 'power2.in',
+                onComplete: () => {
+                    menuRef.current.style.visibility = 'hidden';
+                }
+            });
+        }
+    };
 
     return (
         <>
             <header className="white">
                 <div className="siteTitle">
-                    <Link href="/">KuROEu1</Link>
+                    <Link href="/">Homeまたはアイコン</Link>
                 </div>
                 <nav>
                     <ul className="navList">
-                        <li><Link href="works">Works</Link></li>
-                        <li><Link href="about">About</Link></li>
-                        <li><Link href="contact">Contact</Link></li>
+                        <li><Link href="/works">Works</Link></li>
+                        <li><Link href="/about">About</Link></li>
+                        <li><Link href="/contact">Contact</Link></li>
                     </ul>
                 </nav>
                 <div className={`hamburger hamburger--collapse ${isMenuOpen ? 'is-active' : ''}`}>
@@ -93,11 +101,11 @@ const Header = () => {
                     </div>
                 </div>
             </header>
-            <div ref={menuRef} className="fullscreenMenu" style={{ display: 'none' }}>
+            <div ref={menuRef} className="fullscreenMenu" style={{ visibility: 'hidden' }}>
                 <ul>
-                    <li><Link href="works">Works</Link></li>
-                    <li><Link href="about">About</Link></li>
-                    <li><Link href="contact">Contact</Link></li>
+                    <li><Link href="/works">Works</Link></li>
+                    <li><Link href="/about">About</Link></li>
+                    <li><Link href="/contact">Contact</Link></li>
                 </ul>
             </div>
         </>

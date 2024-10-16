@@ -36,12 +36,22 @@
     }
 }
 
+@font-face {
+    font-family: 'KuROEu1Font';
+    /* src: url('/fonts/Dual-300.ttf') format('TrueType'); */
+    src: url('/fonts/Anurati-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .logo {
     font-weight: bold;
     font-size: 150px;
     z-index: 2;
     position: relative;
     color: #FFF;
+    text-transform: uppercase;
+    font-family: 'KuROEu1Font', sans-serif;
 }
 @media screen and (max-width: 960px)  {
     .logo span{

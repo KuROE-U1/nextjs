@@ -10,18 +10,28 @@ export default function Home() {
     const [loading, setLoading] = useState(true);
     const circles = Array.from({ length: 9 });
 
+    const videoUrl = "https://github.com/KuROE-U1/nextjs/raw/c0810de61bc80dc5de56afd5d701316780b35cc4/public/videos/1.mp4";
+
     useEffect(() => {
-        const video = document.createElement('video');
-        video.src = "https://github.com/KuROE-U1/nextjs/raw/c0810de61bc80dc5de56afd5d701316780b35cc4/public/videos/1.mp4";
-        video.preload = "auto";
-
-        video.onloadeddata = () => {
+        // localStorageから動画のロード状態を確認
+        const isVideoLoaded = localStorage.getItem('videoLoaded');
+        if (isVideoLoaded) {
             setVideoLoaded(true);
-        };
+            setLoading(false);
+        } else {
+            const video = document.createElement('video');
+            video.src = videoUrl;
+            video.preload = "auto";
 
-        return () => {
-            video.onloadeddata = null;
-        };
+            video.onloadeddata = () => {
+                setVideoLoaded(true);
+                localStorage.setItem('videoLoaded', 'true'); // 初回読み込み時にlocalStorageに保存
+            };
+
+            return () => {
+                video.onloadeddata = null;
+            };
+        }
     }, []);
 
     useEffect(() => {
@@ -53,7 +63,7 @@ export default function Home() {
                             ))}
                         </div>
                         <video width="320" height="240" autoPlay loop muted playsInline style={{objectFit: 'cover', width: '100%', height: '100%', position: 'absolute', filter: 'blur(5px) grayscale(50%)' }} >
-                            <source src="https://github.com/KuROE-U1/nextjs/raw/c0810de61bc80dc5de56afd5d701316780b35cc4/public/videos/1.mp4" type="video/mp4" />
+                        <source src={videoUrl} type="video/mp4" />
                             Your browser does not support the video tag.
                         </video>
                         <div className="text-animation logo">
