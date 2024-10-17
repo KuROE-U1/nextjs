@@ -6,7 +6,7 @@ header {
     width: 100%;
     position: fixed;
     box-sizing: border-box;
-    z-index: 1000;
+    z-index: 11;
 }
 
 @media screen and (max-width: 960px) {
@@ -19,10 +19,7 @@ header a {
     color: white;
 }
 
-.siteTitle {
-    font-size: 24px;
-    font-weight: bold;
-}
+
 
 .navList {
     display: flex;
@@ -30,6 +27,8 @@ header a {
     list-style: none;
     font-weight: bold;
 }
+
+/* ハンバーガーメニュー */
 
 .hamburger {
     display: inline-block;
@@ -84,7 +83,7 @@ header a {
 
 .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
     height: 2px;
-    background-color:aqua;
+    background-color:#00ffd8;
     border-radius: 10px;
     position: absolute;
     transition-property: transform;
@@ -105,7 +104,7 @@ header a {
 }
 
 .hamburger-inner::after {
-    background-color:aqua;
+    background-color:#00d8ff;
     bottom: -8px; /* 下の線と中央の線の間隔を調整 */
     width: 30px; /* 一番下の線の幅を30pxに */
     left: 0; /* 左揃え */
@@ -153,6 +152,7 @@ header a {
     width: 30px; /* 開いた状態では全ての線を30pxにする */
 }
 
+/* ハンバーガーメニュー押した時に出てくるメニュー */
 .fullscreenMenu {
     position: fixed;
     top: 0;
@@ -164,6 +164,8 @@ header a {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
+    visibility: hidden;
+    padding: 90px 50px;
 }
 
 .fullscreenMenu ul {
@@ -174,4 +176,26 @@ header a {
 .fullscreenMenu li {
     margin: 20px 0;
     font-size: 24px;
+}
+
+/* アイコン（画面左上） */
+.icon {
+    border-radius: 100%;
+    border: 1px solid #00F7FF;
+}
+
+.icon-area {
+    vertical-align: bottom;
+    position: relative;
+    width: 5vw;
+    height: 5vw;
+}
+/* 960px以下用 */
+@media screen and (max-width: 960px)  {
+    .icon-area{
+        width: 10vw;
+        height: 10vw;
+        min-width:50px;
+        min-height:50px;
+    }
 }

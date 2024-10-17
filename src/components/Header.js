@@ -1,6 +1,7 @@
 "use client";
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 import './header.css';
 
@@ -88,9 +89,11 @@ const Header = () => {
 
     return (
         <>
-            <header className="white">
-                <div className="siteTitle">
-                    <Link href="/">KuROEu1</Link>
+            <header className="white" id="header">
+                <div className="icon-area">
+                    <Link href="/">
+                        <Image src="/images/icon.jpg" className="icon" fill></Image>
+                    </Link>
                 </div>
                 <nav>
                     <ul className="navList">
@@ -105,7 +108,7 @@ const Header = () => {
                     </div>
                 </div>
             </header>
-            <div ref={menuRef} className="fullscreenMenu" style={{ visibility: 'hidden' }}>
+            <div ref={menuRef} className="fullscreenMenu">
                 <ul>
                     <li><Link href="/works" onClick={closeMenu}>Works</Link></li>
                     <li><Link href="/about" onClick={closeMenu}>About</Link></li>

@@ -36,13 +36,7 @@
     }
 }
 
-@font-face {
-    font-family: 'KuROEu1Font';
-    /* src: url('/fonts/Dual-300.ttf') format('TrueType'); */
-    src: url('/fonts/Anurati-Regular.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-}
+
 
 .logo {
     font-weight: bold;
@@ -59,19 +53,27 @@
     }
 }
 
-.container2 {
-    z-index:2000;
-    position: absolute;
-    display: grid;
-    grid-template-columns: repeat(3, 10px); /* 3列のグリッド、それぞれの幅は100px */
-    grid-gap: 10px; /* グリッド間の隙間 */
-    left: 0;
-  }
-  
-  .circle {
-    width: 10px; /* 丸の直径 */
-    height: 10px; /* 丸の直径 */
-    background-color: #3498db; /* 丸の色 */
-    border-radius: 50%; /* 丸を描画するための丸い角 */
-  }
-  
+
+#works {
+    background-color: #FFF;
+}
+
+#about {
+    background-color: #FFF;
+}
+
+#contact {
+    background-color: #FFF;
+}
+
+h2 {
+    font-size: 100px;
+    text-transform: uppercase;
+    font-family: 'KuROEu1Font', sans-serif;
+}
+
+/* 絶対に名前変えろ */
+.style1 {
+    display: flex;
+    justify-content: center;
+}
