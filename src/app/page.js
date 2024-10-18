@@ -74,7 +74,7 @@ export default function Home() {
                     </div>
                 </section>
                 <section id="works">
-                    <div className='style1'><h2>Works</h2></div>
+                    <div className='style1'><h2>Works</h2><div>主に自主制作</div></div>
                 </section>
                 <section id="about">
                     <div className='style1'><h2>About</h2></div>
