@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
+import Image from 'next/image';
 import './index.css';
 import Loading from '../components/Loading';
 
@@ -80,6 +81,14 @@ export default function Home() {
                 </section>
                 <section id="contact">
                     <div className='style1'><h2>Contact</h2></div>
+                    
+                    <div className="style3">
+                        <a href="https://www.example.com" target="_blank" rel="noopener noreferrer">
+                            <div className="style2">
+                                <img src="/images/logo-X.png" className='logo-x' />
+                            </div>
+                        </a>
+                    </div>
                 </section>
             </article>
         </>

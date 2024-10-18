@@ -49,6 +49,7 @@ body {
     font-family: Arial, sans-serif;
     height: 200vh; /* 縦にスクロールするための高さ */
     /*visibility: hidden; /* 初期状態で非表示 */
+    font-family: 'KuROEu1Font', sans-serif;
 }
 nav {
     display: block;
@@ -183,7 +184,8 @@ header {
 @font-face {
     font-family: 'KuROEu1Font';
     /* src: url('/fonts/Dual-300.ttf') format('TrueType'); */
-    src: url('/fonts/Anurati-Regular.otf') format('opentype');
+    /* src: url('/fonts/Anurati-Regular.otf') format('opentype'); */
+    src: url('/fonts/MADE_Evolve_Sans_Regular_EVO__PERSONAL_USE_.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }

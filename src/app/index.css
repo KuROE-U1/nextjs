@@ -47,33 +47,78 @@
     text-transform: uppercase;
     font-family: 'KuROEu1Font', sans-serif;
 }
-@media screen and (max-width: 960px)  {
-    .logo span{
-        font-size: calc(100vw / 7);
-    }
-}
+
 
 
 #works {
-    background-color: #FFF;
+    background-color: #EEE;
+    padding:20px 0;
 }
 
 #about {
-    background-color: #FFF;
+    background-color: #DDD;
+    padding:20px 0;
 }
 
 #contact {
-    background-color: #FFF;
+    background-color: #CCC;
+    padding:20px 0;
 }
 
 h2 {
     font-size: 100px;
     text-transform: uppercase;
     font-family: 'KuROEu1Font', sans-serif;
+    user-select: none;
+    margin:0;
 }
+
 
 /* 絶対に名前変えろ */
 .style1 {
     display: flex;
     justify-content: center;
+}
+
+.style2 {
+    display: inline-flex;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #000;
+    transition: 0.2s cubic-bezier(0,0,0,1);
+}
+
+.style2:hover {
+    background-color: #00F7FF;
+    transform:scale(1.1);
+}
+
+
+
+
+
+.logo-x {
+    padding:25px;
+}
+
+.style3 {
+    display:flex;
+    justify-content:center;
+}
+
+@media screen and (max-width: 960px)  {
+    .logo{
+        font-size: calc(100vw / 7);
+    }
+    h2 {
+        font-size: calc(100vw / 7);
+    }
+    .style2 {
+        width:50px;
+        height:50px;
+    }
+    .logo-x {
+        padding:13px;
+    }
 }
