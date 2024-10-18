@@ -77,10 +77,10 @@ export default function Home() {
                     <div className='style1'><h2>Works</h2><div>主に自主制作</div></div>
                 </section>
                 <section id="about">
-                    <div className='style1'><h2>About</h2></div>
+                    <div className='style1'><h2>About</h2><div>自分について</div></div>
                 </section>
                 <section id="contact">
-                    <div className='style1'><h2>Contact</h2></div>
+                    <div className='style1'><h2>Contact</h2><div>お問い合わせ</div></div>
                     
                     <div className="style3">
                         <a href="https://www.example.com" target="_blank" rel="noopener noreferrer">
