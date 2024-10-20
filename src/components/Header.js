@@ -90,9 +90,10 @@ const Header = () => {
     return (
         <>
             <header className="white" id="header">
-                <div className="icon-area">
+                <div className="icon-area2">
                     <Link href="/">
-                        <Image src="/images/icon.jpg" className="icon" fill></Image>
+                        KuROEu1
+                        {/* <Image src="/images/icon.jpg" className="icon" fill></Image> */}
                     </Link>
                 </div>
                 <nav>

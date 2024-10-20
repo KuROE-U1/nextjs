@@ -44,8 +44,9 @@
     z-index: 2;
     position: relative;
     color: #FFF;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     font-family: 'KuROEu1Font', sans-serif;
+    user-select: none;
 }
 
 

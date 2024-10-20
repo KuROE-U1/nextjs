@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 import Image from 'next/image';
 import './index.css';
 import Loading from '../components/Loading';
@@ -62,6 +63,27 @@ export default function Home() {
             <article>
                 <section id="top">
                     <div style={{ height: '100vh', backgroundColor: '#ccc', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
+                    <video 
+  width="320" 
+  height="240" 
+  autoPlay 
+  loop 
+  muted 
+  playsInline 
+  style={{ 
+    objectFit: 'cover', 
+    width: '100%', 
+    height: '100%', 
+    position: 'absolute', 
+    filter: 'blur(5px) grayscale(50%)', 
+    clipPath: 'inset(3px)' // 上下左右の端を少しカットして、ぼけを抑える
+  }} 
+>
+  <source src={videoUrl} type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+
                         <div className="text-animation logo">
                             <span className="char">K</span>
                             <span className="char">u</span>
@@ -75,7 +97,11 @@ export default function Home() {
                 </section>
                 <section id="works">
                     <div className='style1'><h2>Works</h2><div>主に自主制作</div></div>
+                    <div style={{ textAlign:"center" }}>
+                        <Link href="/works" style={{}}>More</Link>
+                    </div>
                 </section>
+                
                 <section id="about">
                     <div className='style1'><h2>About</h2><div>自分について</div></div>
                 </section>

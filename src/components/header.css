@@ -184,12 +184,19 @@ header a {
     border: 1px solid #00F7FF;
 }
 
-.icon-area {
+.icon-area1 {   /* 画像 */
     vertical-align: bottom;
     position: relative;
     width: 5vw;
     height: 5vw;
 }
+
+.icon-area2 {   /* 文字 */
+    font-weight: bold;
+    font-size: 25px;
+    letter-spacing: 2px;
+}
+
 /* 960px以下用 */
 @media screen and (max-width: 960px)  {
     .icon-area{
