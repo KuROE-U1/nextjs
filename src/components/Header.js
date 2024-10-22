@@ -92,7 +92,7 @@ const Header = () => {
             <header className="white" id="header">
                 <div className="icon-area2">
                     <Link href="/">
-                        KuROEu1
+                        M.H
                         {/* <Image src="/images/icon.jpg" className="icon" fill></Image> */}
                     </Link>
                 </div>

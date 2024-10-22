@@ -66,13 +66,9 @@ export default function Home() {
                     {/* <video width="320" height="240" autoPlay loop muted  playsInline style={{ objectFit: 'cover', width: '100%', height: '100%', position: 'absolute', filter: 'blur(5px) grayscale(50%)', clipPath: 'inset(3px)'}} >
                         <source src={videoUrl} type="video/mp4" />Your browser does not support the video tag.</video> */}
                         <div className="text-animation logo">
-                            <span className="char">K</span>
-                            <span className="char">u</span>
-                            <span className="char">R</span>
-                            <span className="char">O</span>
-                            <span className="char">E</span>
-                            <span className="char">u</span>
-                            <span className="char">1</span>
+                            <span className="char">M</span>
+                            <span className="char">.</span>
+                            <span className="char">H</span>
                         </div>
                     </div>
                 </section>
