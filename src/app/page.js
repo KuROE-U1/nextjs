@@ -3,14 +3,13 @@
 import { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import Image from 'next/image';
+// import Image from 'next/image';
 import './index.css';
-import Loading from '../components/Loading';
+// import Loading from '../components/Loading';
 
 export default function Home() {
     const [isLoading, setIsLoading] = useState(true);
     const videoRef = useRef(null);
-    const circles = Array.from({ length: 9 });
 
     const videoUrl = "https://github.com/KuROE-U1/nextjs/raw/c0810de61bc80dc5de56afd5d701316780b35cc4/public/videos/1.mp4";
 
@@ -50,15 +49,16 @@ export default function Home() {
         }
     }, [isLoading]);
 
-    if (isLoading) {
-        return <Loading />;
-    }
+    // if (isLoading) {
+    //     return <Loading />;
+    // }
 
     return (
         <>
             <Head>
                 <title>index</title>
                 <meta name="description" content="index" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             </Head>
             <article>
                 <section id="top">
