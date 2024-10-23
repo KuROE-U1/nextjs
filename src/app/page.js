@@ -18,7 +18,7 @@ export default function Home() {
             const isVideoLoaded = localStorage.getItem('videoLoaded');
             if (isVideoLoaded) {
                 await new Promise(resolve => setTimeout(resolve, 1000));
-                setIsLoading(false);
+                // setIsLoading(false);
                 return;
             }
 
@@ -37,17 +37,17 @@ export default function Home() {
 
             await Promise.all([videoLoadPromise, minLoadTime]);
 
-            setIsLoading(false);
+            // setIsLoading(false);
         };
 
         loadVideo();
     }, []);
 
-    useEffect(() => {
-        if (!isLoading && videoRef.current) {
-            videoRef.current.play();
-        }
-    }, [isLoading]);
+    // useEffect(() => {
+    //     if (!isLoading && videoRef.current) {
+    //         videoRef.current.play();
+    //     }
+    // }, [isLoading]);
 
     // if (isLoading) {
     //     return <Loading />;
