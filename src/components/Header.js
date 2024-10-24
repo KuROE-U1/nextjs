@@ -1,13 +1,13 @@
 "use client";
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import './header.css';
 
 const Header = () => {
     const router = useRouter();
+    const pathname = usePathname();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [scrollPosition, setScrollPosition] = useState(0);
     const menuRef = useRef(null);
@@ -92,6 +92,10 @@ const Header = () => {
     const handleLinkClick = (e, href) => {
         e.preventDefault();
         closeMenu();
+        
+        if (pathname === href) {
+            return;
+        }
         
         if (typeof window !== 'undefined' && window.gsap) {
             const tl = window.gsap.timeline();

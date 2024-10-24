@@ -1,4 +1,3 @@
-// components/TransitionEffect.js
 "use client";
 
 import { useEffect } from 'react';
@@ -12,7 +11,7 @@ const TransitionEffect = () => {
       const tl = window.gsap.timeline();
       
       tl.to('.transition-effect', {
-        duration: 0.5,
+        duration: 0,
         scaleY: 1,
         transformOrigin: 'top',
         ease: 'power3.inOut'
