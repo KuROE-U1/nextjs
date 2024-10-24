@@ -41,7 +41,13 @@ a {
   }
 } */
 
-/* humberger */
+.char:nth-child(1) { animation-delay: 0.65s; }  
+.char:nth-child(2) { animation-delay: 0.7s; }  
+.char:nth-child(3) { animation-delay: 0.75s; }  
+.char:nth-child(4) { animation-delay: 0.8s; }  
+.char:nth-child(5) { animation-delay: 0.85s; }  
+.char:nth-child(6) { animation-delay: 0.9s; }   
+.char:nth-child(7) { animation-delay: 0.95s; }   
 
 body {
     margin: 0;
@@ -190,13 +196,23 @@ header {
     font-style: normal;
 }
 
-.transition-effect {
+.transition-effect-1, .transition-effect-2 {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
     bottom: 0;
-    background-color: #000;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: 9999;
     transform: scaleY(0);
+    transform-origin: bottom;
+    pointer-events: none;
   }
+  
+  .transition-effect-1 {
+    background-color: black;
+  }
+  
+  .transition-effect-2 {
+    background-color: White;
+  }
+  

@@ -88,31 +88,45 @@ const Header = () => {
     const closeMenu = () => {
         setIsMenuOpen(false);
     };
-
+    
     const handleLinkClick = (e, href) => {
         e.preventDefault();
         closeMenu();
-        
+    
         if (pathname === href) {
             return;
         }
-        
+    
         if (typeof window !== 'undefined' && window.gsap) {
             const tl = window.gsap.timeline();
-            
-            tl.to('.transition-effect', {
+    
+            // 1つ目のワイプ
+            tl.to('.transition-effect-1', {
                 duration: 0.5,
                 scaleY: 1,
-                transformOrigin: 'top',
-                ease: 'power3.inOut',
-                onComplete: () => {
-                    router.push(href);
-                }
+                transformOrigin: 'bottom', // 下から上へ
+                ease: 'power3.out'
+            });
+    
+            // 2つ目のワイプ
+            tl.to('.transition-effect-2', {
+                duration: 0.5,
+                scaleY: 1,
+                transformOrigin: 'bottom', // 下から上へ
+                ease: 'power3.out'
+            }, '-=0.4')
+    
+            // ページ遷移
+            .add(() => {
+                router.push(href);
             });
         } else {
             router.push(href);
         }
     };
+    
+    
+    
 
     return (
         <>
