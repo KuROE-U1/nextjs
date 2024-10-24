@@ -27,21 +27,6 @@
     }
 }
 
-
-
-.logo {
-    font-weight: bold;
-    font-size: 150px;
-    z-index: 2;
-    position: relative;
-    color: #FFF;
-    /* text-transform: uppercase; */
-    font-family: 'KuROEu1Font', sans-serif;
-    user-select: none;
-}
-
-
-
 #works {
     background-color: #EEE;
     padding:20px 0;
@@ -88,10 +73,6 @@ h2 {
     transform:scale(1.1);
 }
 
-
-
-
-
 .logo-x {
     padding:25px;
 }
@@ -102,9 +83,6 @@ h2 {
 }
 
 @media screen and (max-width: 960px)  {
-    .logo{
-        font-size: calc(100vw / 7);
-    }
     h2 {
         font-size: calc(100vw / 7);
     }

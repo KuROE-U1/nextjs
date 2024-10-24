@@ -3,13 +3,6 @@
     gap: 2px;
 }
 
-.char {
-    display: inline-block;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: title-animation 0.8s cubic-bezier(0, 0.7, 0.3, 1) both;
-}
-
 @keyframes title-animation {
     0% {
         opacity: 0;
@@ -18,20 +11,5 @@
     100% {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-.logo {
-    font-weight: bold;
-    font-size: 100px;
-    z-index: 2;
-    position: relative;
-    color: #FFF;
-    text-transform: uppercase;
-    font-family: 'KuROEu1Font', sans-serif;
-}
-@media screen and (max-width: 960px)  {
-    .logo{
-        font-size: calc(100vw / 8);
     }
 }

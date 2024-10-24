@@ -216,3 +216,20 @@ header {
     background-color: White;
   }
   
+  .logo {
+        font-weight: bold;
+        font-size: 150px;
+        z-index: 2;
+        position: relative;
+        color: #FFF;
+        font-family: 'KuROEu1Font', sans-serif;
+        user-select: none;
+        letter-spacing : 10px;
+        text-transform: uppercase;
+    }
+
+    @media screen and (max-width: 960px)  {
+        .logo{
+            font-size: calc(100vw / 7);
+        }
+    }
