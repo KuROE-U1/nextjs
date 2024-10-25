@@ -7,13 +7,12 @@ import Link from 'next/link';
 import './index.css';
 
 export default function Home() {
-    const [isLoading, setIsLoading] = useState(true);
     const videoRef = useRef(null);
     const router = useRouter();
     const pathname = usePathname();
 
     // 動画のURLはここで定義することができます
-    // const videoUrl = "https://github.com/KuROE-U1/nextjs/raw/c0810de61bc80dc5de56afd5d701316780b35cc4/public/videos/1.mp4";
+    const videoUrl = "https://github.com/KuROE-U1/nextjs/raw/c0810de61bc80dc5de56afd5d701316780b35cc4/public/videos/1.mp4";
 
     useEffect(() => {
         const loadVideo = async () => {
@@ -89,7 +88,25 @@ export default function Home() {
             <article>
                 <section id="top">
                     <div style={{ height: '100vh', backgroundColor: '#ccc', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
-                        {/* 動画や背景のコンテンツをここに追加 */}
+                    <video 
+  width="320" 
+  height="240" 
+  autoPlay 
+  loop 
+  muted 
+  playsInline 
+  style={{ 
+    objectFit: 'cover', 
+    width: '100%', 
+    height: '100%', 
+    position: 'absolute', 
+    filter: 'blur(5px) grayscale(50%)', 
+    clipPath: 'inset(3px)' // 上下左右の端を少しカットして、ぼけを抑える
+  }} 
+>
+  <source src={videoUrl} type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
                         <div className="text-animation logo">
                             <span className="char">M</span>
                             <span className="char">.</span>
@@ -105,7 +122,7 @@ export default function Home() {
                     </div>
                     <div style={{ textAlign: "center" }}>
                         <Link href="/works" onClick={(e) => handleLinkClick(e, '/works')}>
-                            More
+                            <button>More</button>
                         </Link>
                     </div>
                 </section>
