@@ -7,12 +7,13 @@ import Link from 'next/link';
 import './index.css';
 
 export default function Home() {
+    const [isLoading, setIsLoading] = useState(true);
     const videoRef = useRef(null);
     const router = useRouter();
     const pathname = usePathname();
 
     // 動画のURLはここで定義することができます
-    const videoUrl = "https://github.com/KuROE-U1/nextjs/raw/c0810de61bc80dc5de56afd5d701316780b35cc4/public/videos/1.mp4";
+    // const videoUrl = "https://github.com/KuROE-U1/nextjs/raw/c0810de61bc80dc5de56afd5d701316780b35cc4/public/videos/1.mp4";
 
     useEffect(() => {
         const loadVideo = async () => {
@@ -104,7 +105,7 @@ export default function Home() {
                     </div>
                     <div style={{ textAlign: "center" }}>
                         <Link href="/works" onClick={(e) => handleLinkClick(e, '/works')}>
-                            <button>More</button>
+                            More
                         </Link>
                     </div>
                 </section>

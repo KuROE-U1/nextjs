@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import handleLinkClick from '../utils/handleLinkClick';     //リンクをクリックしたときの画面遷移アニメーション（ワイプ）
 import './header.css';
 
 const Header = () => {
