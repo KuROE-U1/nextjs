@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+import handleLinkClick from '../utils/handleLinkClick';     //リンクをクリックしたときの画面遷移アニメーション（ワイプ）
 import './header.css';
 
 const Header = () => {
@@ -71,7 +72,7 @@ const Header = () => {
         if (isMenuOpen) {
             gsap.fromTo(menuRef.current, 
                 { y: '-100%', visibility: 'visible' }, 
-                { y: '0%', duration: 0.5, ease: 'power2.out' }
+                { y: '0%', duration: 0.5, ease: 'power3.out' }
             );
         } else {
             gsap.to(menuRef.current, {
@@ -85,15 +86,12 @@ const Header = () => {
         }
     };
 
-    const closeMenu = () => {
-        setIsMenuOpen(false);
-    };
-
     const handleLinkClick = (e, href) => {
         e.preventDefault(); // デフォルトのリンク動作をキャンセル
-        closeMenu(); // メニューを閉じる
+        setIsMenuOpen(false); // メニューを閉じる
 
         if (pathname === href) {
+            console.log("何もしない")
             return; // 現在のパスと同じ場合は何もしない
         }
 

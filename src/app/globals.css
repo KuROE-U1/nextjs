@@ -224,12 +224,27 @@ header {
         color: #FFF;
         font-family: 'KuROEu1Font', sans-serif;
         user-select: none;
-        letter-spacing : 10px;
         text-transform: uppercase;
     }
 
     @media screen and (max-width: 960px)  {
         .logo{
             font-size: calc(100vw / 7);
+        }
+    }
+
+    .text-animation {
+        display: flex;
+        gap: 5px;
+    }
+
+    @keyframes title-animation {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
         }
     }
