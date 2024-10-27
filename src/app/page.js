@@ -87,26 +87,10 @@ export default function Home() {
             </Head>
             <article>
                 <section id="top">
-                    <div style={{ height: '100vh', backgroundColor: '#ccc', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
-                    <video 
-  width="320" 
-  height="240" 
-  autoPlay 
-  loop 
-  muted 
-  playsInline 
-  style={{ 
-    objectFit: 'cover', 
-    width: '100%', 
-    height: '100%', 
-    position: 'absolute', 
-    filter: 'blur(5px) grayscale(50%)', 
-    clipPath: 'inset(3px)' // 上下左右の端を少しカットして、ぼけを抑える
-  }} 
->
-  <source src={videoUrl} type="video/mp4" />
-  Your browser does not support the video tag.
-</video>
+                    <div className='first-view'>
+                        {/* <video width="320" height="240" autoPlay loop muted playsInline style={{ objectFit: 'cover', width: '100%', height: '100%', position: 'absolute', filter: 'blur(5px) grayscale(50%)', clipPath: 'inset(3px)' }} >
+                            <source src={videoUrl} type="video/mp4" /> Your browser does not support the video tag.
+                        </video> */}
                         <div className="text-animation logo">
                             <span className="char">M</span>
                             <span className="char">.</span>

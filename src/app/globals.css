@@ -248,3 +248,13 @@ header {
             transform: translateY(0);
         }
     }
+
+    .first-view {
+        height: 100vh;
+        background-color: #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }

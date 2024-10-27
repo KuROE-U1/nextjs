@@ -11,7 +11,7 @@ export default function Works() {
             <meta name="description" content="works" />
         </Head>
         <main style={{ height: '200vh' }}>
-            <div style={{ height: '100vh', backgroundColor: '#ccc', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
+            <div className='first-view'>
                 <div className="text-animation logo">
                     <span className="char">W</span>
                     <span className="char">o</span>

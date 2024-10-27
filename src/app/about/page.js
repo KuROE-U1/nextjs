@@ -11,7 +11,7 @@ export default function About() {
             <meta name="description" content="About" />
         </Head>
         <main style={{ height: '200vh' }}>
-            <div style={{ height: '100vh', backgroundColor: '#ccc', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
+            <div className='first-view'>
                 <div className="text-animation logo">
                     <span className="char">a</span>
                     <span className="char">b</span>
