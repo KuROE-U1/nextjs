@@ -265,10 +265,3 @@ header {
         position: relative;
         overflow: hidden;
     }
-
-    .test {
-        position:absolute;
-        background:#000;
-        height:100vh;
-        width:100vw;
-    }
