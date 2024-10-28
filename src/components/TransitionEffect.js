@@ -17,7 +17,7 @@ const TransitionEffect = () => {
         ease: 'power3.out'
       })
       .to('.transition-effect-1', {
-        duration: 0.5,
+        duration: 0.4,
         scaleY: 0,
         transformOrigin: 'top',
         ease: 'power3.out'
@@ -29,7 +29,7 @@ const TransitionEffect = () => {
         ease: 'power3.out'
       })
       .to('.transition-effect-2', {
-        duration: 0.5,
+        duration: 0.4,
         scaleY: 0,
         transformOrigin: 'top',
         ease: 'power3.out'

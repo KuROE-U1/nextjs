@@ -71,12 +71,12 @@ const Header = () => {
         if (isMenuOpen) {
             gsap.fromTo(menuRef.current, 
                 { y: '-100%', visibility: 'visible' }, 
-                { y: '0%', duration: 0.5, ease: 'power3.out' }
+                { y: '0%', duration: 0.4, ease: 'power3.out' }
             );
         } else {
             gsap.to(menuRef.current, {
                 y: '-100%',
-                duration: 0.5,
+                duration: 0.4,
                 ease: 'power2.in',
                 onComplete: () => {
                     menuRef.current.style.visibility = 'hidden';
@@ -99,7 +99,7 @@ const Header = () => {
             
             // 1つ目のワイプ
             tl.to('.transition-effect-1', {
-                duration: 0.5,
+                duration: 0.4,
                 scaleY: 1,
                 transformOrigin: 'bottom', // 下から上へ
                 ease: 'power3.out'
@@ -107,11 +107,11 @@ const Header = () => {
 
             // 2つ目のワイプ
             tl.to('.transition-effect-2', {
-                duration: 0.5,
+                duration: 0.4,
                 scaleY: 1,
                 transformOrigin: 'bottom', // 下から上へ
                 ease: 'power3.out'
-            }, '-=0.4');
+            }, '-=0.3');
     
             // ページ遷移
             tl.add(() => {

@@ -1,30 +1,19 @@
-.char {
-    display: inline-block;
-    opacity: 0;
-    transform: translateY(50px);
-    animation: title-animation 0.8s cubic-bezier(0, 0.7, 0.3, 1) both;
-}
-
-.rotated-u {
-    transform: rotate(30deg);
-    transform-origin: 100% 100%;
-}
-
-
-
 #works {
     background-color: #EEE;
     padding:20px 0;
+    
 }
 
 #about {
     background-color: #DDD;
     padding:20px 0;
+    height: 100vh;
 }
 
 #contact {
     background-color: #CCC;
     padding:20px 0;
+    height: 100vh;
 }
 
 h2 {

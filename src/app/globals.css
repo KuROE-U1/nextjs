@@ -41,6 +41,13 @@ a {
   }
 } */
 
+.char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: title-animation 0.8s cubic-bezier(0, 0.7, 0.3, 1) both;
+}
+
 .char:nth-child(1) { animation-delay: 0.65s; }  
 .char:nth-child(2) { animation-delay: 0.7s; }  
 .char:nth-child(3) { animation-delay: 0.75s; }  
@@ -251,10 +258,17 @@ header {
 
     .first-view {
         height: 100vh;
-        background-color: #ccc;
+        background-color: #000;
         display: flex;
         align-items: center;
         justify-content: center;
         position: relative;
         overflow: hidden;
+    }
+
+    .test {
+        position:absolute;
+        background:#000;
+        height:100vh;
+        width:100vw;
     }

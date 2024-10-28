@@ -1,15 +1,20 @@
 "use client";
 
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import Head from 'next/head';
 import Link from 'next/link';
 import './index.css';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
     const videoRef = useRef(null);
     const router = useRouter();
     const pathname = usePathname();
+    const textRef = useRef(null);
 
     // 動画のURLはここで定義することができます
     const videoUrl = "https://github.com/KuROE-U1/nextjs/raw/c0810de61bc80dc5de56afd5d701316780b35cc4/public/videos/1.mp4";
@@ -34,47 +39,72 @@ export default function Home() {
             });
 
             const minLoadTime = new Promise(resolve => setTimeout(resolve, 1000));
-
             await Promise.all([videoLoadPromise, minLoadTime]);
-
         };
 
         loadVideo();
     }, []);
 
+    useEffect(() => {
+        if (textRef.current) {
+            // 既存のテキストアニメーション
+            gsap.to(".text-animation", {
+                scale: 2,
+                color: "RGB(0, 0, 0)",
+                scrollTrigger: {
+                    trigger: textRef.current,
+                    start: "center center",
+                    end: "bottom center+50vh",
+                    scrub: true,
+                    markers: true
+                },
+                duration: 1
+            });
+    
+            // 新しいアニメーション：first-viewを暗くする
+            gsap.to(".first-view", {
+                opacity:"0.7",
+                scrollTrigger: {
+                    trigger: ".first-view",
+                    start: "top top",
+                    end: "bottom center",
+                    scrub: true
+                }
+            });
+        }
+    }, []);
+
+
+
     const handleLinkClick = (e, href) => {
-        e.preventDefault(); // デフォルトのリンク動作をキャンセル
+        e.preventDefault();
 
         if (pathname === href) {
-            return; // 現在のパスと同じ場合は何もしない
+            return;
         }
 
-        // GSAPが利用できる場合にアニメーションを適用
         if (typeof window !== 'undefined' && window.gsap) {
             const tl = window.gsap.timeline();
 
-            // 1つ目のワイプ
             tl.to('.transition-effect-1', {
-                duration: 0.5,
+                duration: 0.4,
                 scaleY: 1,
-                transformOrigin: 'bottom', // 下から上へ
+                transformOrigin: 'bottom',
                 ease: 'power3.out'
             });
 
-            // 2つ目のワイプ
             tl.to('.transition-effect-2', {
-                duration: 0.5,
+                duration: 0.4,
                 scaleY: 1,
-                transformOrigin: 'bottom', // 下から上へ
+                transformOrigin: 'bottom',
                 ease: 'power3.out'
             }, '-=0.4');
 
-            // ページ遷移
             tl.add(() => {
                 router.push(href);
             });
         } else {
-            router.push(href); // GSAPが利用できない場合は直接ルーティング
+            router.push(href);
         }
     };
 
@@ -87,10 +117,11 @@ export default function Home() {
             </Head>
             <article>
                 <section id="top">
-                    <div className='first-view'>
-                        {/* <video width="320" height="240" autoPlay loop muted playsInline style={{ objectFit: 'cover', width: '100%', height: '100%', position: 'absolute', filter: 'blur(5px) grayscale(50%)', clipPath: 'inset(3px)' }} >
+                    <div className='first-view' ref={textRef}>
+                        <div className='test'></div>
+                        <video width="320" height="240" autoPlay loop muted playsInline style={{ objectFit: 'cover', width: '100%', height: '100%', position: 'absolute', filter: 'blur(5px) grayscale(50%)', clipPath: 'inset(3px)' }} >
                             <source src={videoUrl} type="video/mp4" /> Your browser does not support the video tag.
-                        </video> */}
+                        </video>
                         <div className="text-animation logo">
                             <span className="char">M</span>
                             <span className="char">.</span>
@@ -99,7 +130,7 @@ export default function Home() {
                     </div>
                 </section>
 
-                <section id="works">
+                <section id="works" className=''>
                     <div className='style1'>
                         <h2>Works</h2>
                         <div>主に自主制作</div>
@@ -133,7 +164,6 @@ export default function Home() {
                 </section>
             </article>
 
-            {/* トランジションエフェクトの要素 */}
             <div className="transition-effect-1"></div>
             <div className="transition-effect-2"></div>
         </>
