@@ -17,7 +17,7 @@ export default function Home() {
     const textRef = useRef(null);
 
     // 動画のURLはここで定義することができます
-    const videoUrl = "https://github.com/KuROE-U1/nextjs/blob/9ea3a574be94a3fba86c94e6b8ff8beb43e469c7/public/videos/ShortReel.mp4";
+    const videoUrl = "https://github.com/KuROE-U1/nextjs/raw/d0923b36ef84c2adeb372be88f05cabd615c40c1/public/videos/ShortReel.mp4";
 
     useEffect(() => {
         const loadVideo = async () => {
@@ -49,7 +49,7 @@ export default function Home() {
         if (textRef.current) {
             // 既存のテキストアニメーション
             gsap.to(".text-animation", {
-                scale: 2,
+                // scale: 2,
                 color: "RGB(0, 0, 0)",
                 scrollTrigger: {
                     trigger: textRef.current,
@@ -71,6 +71,18 @@ export default function Home() {
                     scrub: true
                 }
             });
+
+            gsap.to(".about", {
+                transform: "rotateX(0) rotateY(0) rotateZ(0)",
+                scale:"1",
+                scrollTrigger: {
+                    trigger: textRef.current,
+                    start: "top top",
+                    end: "bottom center",
+                    scrub: true,
+                    markers: true
+                }
+            })
         }
     }, []);
 
@@ -98,7 +110,7 @@ export default function Home() {
                 scaleY: 1,
                 transformOrigin: 'bottom',
                 ease: 'power3.out'
-            }, '-=0.4');
+            }, '-=0.3');
 
             tl.add(() => {
                 router.push(href);
@@ -116,7 +128,7 @@ export default function Home() {
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             </Head>
             <article>
-                <section id="top">
+                <section id="top" style={{ position:"sticky",top:"0" }}>
                     <div className='first-view' ref={textRef}>
                         <video width="320" height="240" className='test' autoPlay loop muted playsInline style={{ objectFit: 'cover', width: '100%', height: '100%', position: 'absolute', filter: 'blur(5px) grayscale(50%)', clipPath: 'inset(3px)' }} >
                             <source src={videoUrl} type="video/mp4" /> Your browser does not support the video tag.
@@ -129,22 +141,22 @@ export default function Home() {
                     </div>
                 </section>
 
-                <section id="works" className=''>
+                <section id="about" className='about'>
                     <div className='style1'>
-                        <h2>Works</h2>
-                        <div>主に自主制作</div>
-                    </div>
-                    <div style={{ textAlign: "center" }}>
-                        <Link href="/works" onClick={(e) => handleLinkClick(e, '/works')}>
-                            <button>More</button>
-                        </Link>
+                        <h2>About</h2>
+                        <div></div>
                     </div>
                 </section>
 
-                <section id="about">
+                <section id="works" className='works'>
                     <div className='style1'>
-                        <h2>About</h2>
-                        <div>自分について</div>
+                        <h2 style={{ color:"#333" }}>Works</h2>
+                        <div></div>
+                    </div>
+                    <div style={{ textAlign: "center" }}>
+                        <Link href="/works" onClick={(e) => handleLinkClick(e, '/works')}>
+                            <button>View More</button>
+                        </Link>
                     </div>
                 </section>
 
