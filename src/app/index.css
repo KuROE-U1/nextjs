@@ -1,19 +1,25 @@
 #works {
-    background-color: #EEE;
-    padding:20px 0;
-    
+    background-color: #FFF;
+    padding:50px 0;
+    position:relative;
+    height: 100vh;
+
 }
 
 #about {
     background-color: #DDD;
-    padding:20px 0;
+    padding:50px 0;
     height: 100vh;
+    position:relative;
+    transform: rotateX(90deg) rotateY(20deg) rotateZ(10deg);
+    scale:0.7;
 }
 
 #contact {
     background-color: #CCC;
-    padding:20px 0;
+    padding:50px 0;
     height: 100vh;
+    position:relative;
 }
 
 h2 {
@@ -22,6 +28,7 @@ h2 {
     font-family: 'KuROEu1Font', sans-serif;
     user-select: none;
     margin:0;
+    letter-spacing:10px;
 }
 
 
@@ -67,4 +74,12 @@ h2 {
     .logo-x {
         padding:13px;
     }
+}
+
+.about-title {
+    /* overflow: hidden; */
+}
+
+.about-char {
+    opacity: 0; /* 初期状態で透明 */
 }
