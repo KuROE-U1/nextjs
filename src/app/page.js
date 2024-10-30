@@ -7,6 +7,7 @@ import Link from 'next/link';
 import './index.css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Image from 'next/image';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -144,7 +145,13 @@ export default function Home() {
                 <section id="about" className='about'>
                     <div className='style1'>
                         <h2>About</h2>
-                        <div></div>
+                        <div className="style3">
+                            <div style={{ width:"20%", textAlign:"center", margin:"10px" }}>
+                                <img src="/images/icon_white.png" className='icon'></img>
+                                <h4 style={{ marginTop:"10px" }}>KuROEu1</h4>
+                            </div>
+                            <div style={{ width:"60%", margin:"10px" }}>説明</div>
+                        </div>
                     </div>
                 </section>
 
@@ -164,13 +171,6 @@ export default function Home() {
                     <div className='style1'>
                         <h2>Contact</h2>
                         <div>お問い合わせ</div>
-                    </div>
-                    <div className="style3">
-                        <a href="https://www.example.com" target="_blank" rel="noopener noreferrer">
-                            <div className="style2">
-                                <img src="/images/logo-X.png" className='logo-x' />
-                            </div>
-                        </a>
                     </div>
                 </section>
             </article>
