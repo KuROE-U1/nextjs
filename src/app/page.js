@@ -148,7 +148,7 @@ export default function Home() {
                         <div className="style3">
                             <div style={{ width:"20%", textAlign:"center", margin:"10px" }}>
                                 <img src="/images/icon_white.png" className='icon'></img>
-                                <h4 style={{ marginTop:"10px" }}>KuROEu1</h4>
+                                <h4 style={{ marginTop:"10px" }}>M.H</h4>
                             </div>
                             <div style={{ width:"60%", margin:"10px" }}>説明</div>
                         </div>
