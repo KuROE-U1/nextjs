@@ -143,15 +143,19 @@ export default function Home() {
                 </section>
 
                 <section id="about" className='about'>
-                    <div className='style1'>
-                        <h2>About</h2>
-                        <div className="style3">
-                            <div style={{ width:"20%", textAlign:"center", margin:"10px" }}>
-                                <img src="/images/icon_white.png" className='icon'></img>
-                                <h4 style={{ marginTop:"10px" }}>M.H</h4>
+                    <div style={{ width:"80%", margin:"auto" }}>
+                        <div className='style1'>
+                            <h2>About</h2>
+                            <div className="style3">
+                                <div className='style4'>
+                                    {/* <img src="/images/icon_white.png" className='icon'></img> */}
+                                    <img src="/images/icon.jpg" className='icon'></img>
+                                    <h4 style={{ marginTop:"10px" }}>KuROEu1</h4>
+                                </div>
+                                <div className='style5'>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</div>
                             </div>
-                            <div style={{ width:"60%", margin:"10px" }}>説明</div>
                         </div>
+                        <button>MORE</button>
                     </div>
                 </section>
 
