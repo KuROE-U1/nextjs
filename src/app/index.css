@@ -7,12 +7,11 @@
 }
 
 #about {
-    background-color: #DDD;
+    background-color: #FFF;
     padding:50px 0;
     height: 100vh;
     position:relative;
-    transform: rotateX(90deg) rotateY(20deg) rotateZ(10deg);
-    scale:0.7;
+    clip-path: polygon(0% 50px, 100% 150px, 100% 100%, 0px 100%);
 }
 
 #contact {
@@ -29,7 +28,8 @@ h2 {
     margin:0;
     letter-spacing:10px;
     text-indent: 10px;
-    margin-bottom: 20px;
+    margin: 20px 0;
+    text-align: center;
 }
 
 h3 {
@@ -98,7 +98,7 @@ h4 {
         flex-direction: column;
     }
     .style4 {
-        width:250px;
+        width:200px;
     }
 }
 
@@ -112,8 +112,28 @@ h4 {
 
 .icon {
     width: 100%;
-    border: 1px solid black;
+    border: 2px solid #0FF;
     border-radius: 100%;
     box-sizing: border-box;
 }
 
+.btn1 {
+    width:200px;
+    padding: 20px;
+    border-radius:100px;
+    color: #000;
+    background-color: #FFF;
+    border: 2px solid #000;
+    cursor:pointer;
+    font-weight: bold;
+}
+
+.btn1:hover {
+    background-color: #000;
+    color: #FFF;
+    border: 2px solid #FFF;
+}
+
+.about-title {
+    opacity:0;
+}

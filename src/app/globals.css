@@ -67,7 +67,7 @@ body {
     font-family: Arial, sans-serif;
     height: 200vh; /* 縦にスクロールするための高さ */
     /*visibility: hidden; /* 初期状態で非表示 */
-    font-family: 'KuROEu1Font', sans-serif;
+    /* font-family: 'KuROEu1Font', sans-serif; */
 }
 nav {
     display: block;

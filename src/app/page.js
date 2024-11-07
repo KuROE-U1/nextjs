@@ -57,7 +57,7 @@ export default function Home() {
                     start: "center center",
                     end: "bottom center+50vh",
                     scrub: true,
-                    markers: true
+                    // markers: true
                 },
                 duration: 1
             });
@@ -74,12 +74,23 @@ export default function Home() {
             });
 
             gsap.to(".about", {
-                transform: "rotateX(0) rotateY(0) rotateZ(0)",
-                scale:"1",
+                clipPath: "polygon(0% 0px, 100% 0px, 100% 100%, 0px 100%)",
                 scrollTrigger: {
                     trigger: textRef.current,
                     start: "top top",
                     end: "bottom center",
+                    scrub: true,
+                    // markers: true
+                }
+            })
+
+            
+            gsap.to(".about-title", {
+                opacity:"1",
+                scrollTrigger: {
+                    trigger: ".about",
+                    start: "top top",
+                    end: "center center-500px",
                     scrub: true,
                     markers: true
                 }
@@ -144,18 +155,21 @@ export default function Home() {
 
                 <section id="about" className='about'>
                     <div style={{ width:"80%", margin:"auto" }}>
+                    <h2 className="about-title">About</h2>
                         <div className='style1'>
-                            <h2>About</h2>
+                            
                             <div className="style3">
                                 <div className='style4'>
                                     {/* <img src="/images/icon_white.png" className='icon'></img> */}
                                     <img src="/images/icon.jpg" className='icon'></img>
-                                    <h4 style={{ marginTop:"10px" }}>KuROEu1</h4>
+                                    <h4 style={{ marginTop:"10px", color:"#0AF" }}>KuROEu1</h4>
                                 </div>
                                 <div className='style5'>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</div>
                             </div>
                         </div>
-                        <button>MORE</button>
+                        <div style={{ textAlign:"center", margin:"20px 0" }}>
+                        <button className="btn1">VIEW MORE</button>
+                        </div>
                     </div>
                 </section>
 
@@ -174,7 +188,7 @@ export default function Home() {
                 <section id="contact">
                     <div className='style1'>
                         <h2>Contact</h2>
-                        <div>お問い合わせ</div>
+                        {/* <div>お問い合わせ</div> */}
                     </div>
                 </section>
             </article>
