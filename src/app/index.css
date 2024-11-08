@@ -8,15 +8,14 @@
 
 #about {
     background-color: #FFF;
-    padding:50px 0;
-    height: 100vh;
-    position:relative;
-    clip-path: polygon(0% 50px, 100% 150px, 100% 100%, 0px 100%);
+    padding: 50px 0;
+    position: relative;
+    clip-path: polygon(0% 50px, 100% 100vh, 100% 100%, 0px 100%);
 }
 
 #contact {
     background-color: #CCC;
-    padding:50px 0;
+    /* padding:50px 0; */
     position:relative;
 }
 
@@ -26,8 +25,8 @@ h2 {
     font-family: 'KuROEu1Font', sans-serif;
     user-select: none;
     margin:0;
-    letter-spacing:10px;
-    text-indent: 10px;
+    /* letter-spacing:10px;
+    text-indent: 10px; */
     margin: 20px 0;
     text-align: center;
 }
@@ -134,6 +133,8 @@ h4 {
     border: 2px solid #FFF;
 }
 
-.about-title {
-    opacity:0;
+.about-title span {
+    opacity: 0;                 /* 初期の透明度 */
+    transform: translateY(10px); /* 初期位置を下に設定 */
+    display: inline-block;       /* 各文字を個別に扱うため */
 }

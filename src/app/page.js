@@ -9,7 +9,10 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
 
-gsap.registerPlugin(ScrollTrigger);
+import { CustomEase } from "gsap/CustomEase";  
+
+gsap.registerPlugin(ScrollTrigger, CustomEase);
+CustomEase.create("custom", "0, 0.7, 0.3, 1");
 
 export default function Home() {
     const videoRef = useRef(null);
@@ -17,9 +20,10 @@ export default function Home() {
     const pathname = usePathname();
     const textRef = useRef(null);
 
-    // 動画のURLはここで定義することができます
+    // 動画のURL
     const videoUrl = "https://github.com/KuROE-U1/nextjs/raw/d0923b36ef84c2adeb372be88f05cabd615c40c1/public/videos/ShortReel.mp4";
 
+    // ビデオのプリロード
     useEffect(() => {
         const loadVideo = async () => {
             const isVideoLoaded = localStorage.getItem('videoLoaded');
@@ -46,90 +50,92 @@ export default function Home() {
         loadVideo();
     }, []);
 
+    // テキストと背景のアニメーション
     useEffect(() => {
         if (textRef.current) {
-            // 既存のテキストアニメーション
+            // `.text-animation`のテキストカラー変更
             gsap.to(".text-animation", {
-                // scale: 2,
                 color: "RGB(0, 0, 0)",
                 scrollTrigger: {
                     trigger: textRef.current,
                     start: "center center",
                     end: "bottom center+50vh",
                     scrub: true,
-                    // markers: true
+                    // markers: true,
                 },
-                duration: 1
+                duration: 1,
             });
     
-            // 新しいアニメーション：first-viewを暗くする
+            // `.test`の背景不透明度変更
             gsap.to(".test", {
-                opacity:"0.2",
+                opacity: "0.2",
                 scrollTrigger: {
                     trigger: ".first-view",
                     start: "top top",
                     end: "bottom center",
-                    scrub: true
+                    scrub: true,
+                    // markers: true,
                 }
             });
 
+            // `.about`のクリップパスアニメーション
             gsap.to(".about", {
-                clipPath: "polygon(0% 0px, 100% 0px, 100% 100%, 0px 100%)",
+                clipPath: "polygon(0% 0px, 100% 0vh, 100% 100%, 0px 100%)",
                 scrollTrigger: {
-                    trigger: textRef.current,
-                    start: "top top",
+                    trigger: ".first-view",  // トリガーを`.about`に設定
+                    start: "top top", // ページ下部からスクロール開始
                     end: "bottom center",
                     scrub: true,
-                    // markers: true
+                    markers: true,
                 }
-            })
+            });
 
-            
-            gsap.to(".about-title", {
-                opacity:"1",
-                scrollTrigger: {
-                    trigger: ".about",
-                    start: "top top",
-                    end: "center center-500px",
-                    scrub: true,
-                    markers: true
-                }
-            })
         }
     }, []);
 
+    // `.about-title`の文字アニメーション
+    useEffect(() => {
+        const tl = gsap.timeline({
+            // delay: 0.6,                                 // 表示遅延
+            scrollTrigger: {
+                trigger: ".top",
+                start: "top+=10% top",
+                end: "center top",
+                toggleActions: "none play none reset",
+                // markers: true,
+            }
+        });
+    
+        tl.to(".about-title span", {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,                              // 全文字表示が終わるまで 0.8s
+            ease: "custom",                             // カスタムイージング 上部に記載
+            stagger: 0.05,                              // 各文字に遅延 0.05s
+        });
+    }, []);
 
-
+    // ページ遷移エフェクト
     const handleLinkClick = (e, href) => {
         e.preventDefault();
 
-        if (pathname === href) {
-            return;
-        }
+        if (pathname === href) return;
 
-        if (typeof window !== 'undefined' && window.gsap) {
-            const tl = window.gsap.timeline();
-
-            tl.to('.transition-effect-1', {
-                duration: 0.4,
-                scaleY: 1,
-                transformOrigin: 'bottom',
-                ease: 'power3.out'
-            });
-
-            tl.to('.transition-effect-2', {
-                duration: 0.4,
-                scaleY: 1,
-                transformOrigin: 'bottom',
-                ease: 'power3.out'
-            }, '-=0.3');
-
-            tl.add(() => {
-                router.push(href);
-            });
-        } else {
-            router.push(href);
-        }
+        const tl = gsap.timeline();
+        tl.to('.transition-effect-1', {
+            duration: 0.4,
+            scaleY: 1,
+            transformOrigin: 'bottom',
+            ease: 'power3.out',
+            markers: true,
+        })
+        .to('.transition-effect-2', {
+            duration: 0.4,
+            scaleY: 1,
+            transformOrigin: 'bottom',
+            ease: 'power3.out'
+        }, '-=0.3')
+        .add(() => router.push(href));
     };
 
     return (
@@ -140,10 +146,11 @@ export default function Home() {
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             </Head>
             <article>
-                <section id="top" style={{ position:"sticky",top:"0" }}>
+                <section id="top" className='top' style={{ position: "sticky", top: "0" }}>
                     <div className='first-view' ref={textRef}>
-                        <video width="320" height="240" className='test' autoPlay loop muted playsInline style={{ objectFit: 'cover', width: '100%', height: '100%', position: 'absolute', filter: 'blur(5px) grayscale(50%)', clipPath: 'inset(3px)' }} >
-                            <source src={videoUrl} type="video/mp4" /> Your browser does not support the video tag.
+                        <video width="320" height="240" className='test' autoPlay loop muted playsInline style={{ objectFit: 'cover', width: '100%', height: '100%', position: 'absolute', filter: 'blur(5px) grayscale(50%)', clipPath: 'inset(3px)' }}>
+                            <source src={videoUrl} type="video/mp4" /> 
+                            Your browser does not support the video tag.
                         </video>
                         <div className="text-animation logo">
                             <span className="char">M</span>
@@ -154,42 +161,45 @@ export default function Home() {
                 </section>
 
                 <section id="about" className='about'>
-                    <div style={{ width:"80%", margin:"auto" }}>
-                    <h2 className="about-title">About</h2>
+                    <div style={{ width: "80%", margin: "auto" }}>
+                        <h2 className="about-title">
+                            <span>A</span><span>b</span><span>o</span><span>u</span><span>t</span>
+                        </h2>
                         <div className='style1'>
-                            
                             <div className="style3">
                                 <div className='style4'>
-                                    {/* <img src="/images/icon_white.png" className='icon'></img> */}
                                     <img src="/images/icon.jpg" className='icon'></img>
-                                    <h4 style={{ marginTop:"10px", color:"#0AF" }}>KuROEu1</h4>
+                                    <h4 style={{ marginTop: "10px", color: "#0AF" }}>KuROEu1</h4>
                                 </div>
-                                <div className='style5'>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</div>
+                                <div className='style5'>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</div>
                             </div>
                         </div>
-                        <div style={{ textAlign:"center", margin:"20px 0" }}>
-                        <button className="btn1">VIEW MORE</button>
+                        <div style={{ textAlign: "center", margin: "20px 0" }}>
+                            <Link href="/about" onClick={(e) => handleLinkClick(e, '/about')}>
+                                <button className="btn1">VIEW MORE</button>
+                            </Link>
                         </div>
                     </div>
                 </section>
 
                 <section id="works" className='works'>
                     <div className='style1'>
-                        <h2 style={{ color:"#333" }}>Works</h2>
+                        <h2 style={{ color: "#333" }}>Works</h2>
                         <div></div>
                     </div>
-                    <div style={{ textAlign: "center" }}>
+                    <div style={{ textAlign: "center", margin: "20px 0" }}>
                         <Link href="/works" onClick={(e) => handleLinkClick(e, '/works')}>
-                            <button>View More</button>
+                            <button className="btn1">VIEW MORE</button>
                         </Link>
                     </div>
                 </section>
 
                 <section id="contact">
+                    <Link href="/contact" onClick={(e) => handleLinkClick(e, '/contact')}>
                     <div className='style1'>
                         <h2>Contact</h2>
-                        {/* <div>お問い合わせ</div> */}
                     </div>
+                    </Link>
                 </section>
             </article>
 
