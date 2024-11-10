@@ -230,13 +230,14 @@ header {
   
   .logo {
         font-weight: bold;
-        font-size: 150px;
+        font-size: 200px;
         z-index: 2;
         position: relative;
         color: #FFF;
         font-family: 'KuROEu1Font', sans-serif;
         user-select: none;
-        text-transform: uppercase;
+        /* text-transform: uppercase; */
+        /* text-shadow: #000 2px 2px; */
     }
 
     @media screen and (max-width: 960px)  {

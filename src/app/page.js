@@ -86,7 +86,7 @@ export default function Home() {
                     start: "top top", // ページ下部からスクロール開始
                     end: "bottom center",
                     scrub: true,
-                    markers: true,
+                    // markers: true,
                 }
             });
 
@@ -99,10 +99,10 @@ export default function Home() {
             // delay: 0.6,                                 // 表示遅延
             scrollTrigger: {
                 trigger: ".top",
-                start: "top+=10% top",
+                start: "top+=15% top",
                 end: "center top",
                 toggleActions: "none play none reset",
-                // markers: true,
+                markers: true,
             }
         });
     
@@ -153,18 +153,23 @@ export default function Home() {
                             Your browser does not support the video tag.
                         </video>
                         <div className="text-animation logo">
-                            <span className="char">M</span>
-                            <span className="char">.</span>
-                            <span className="char">H</span>
+                            <span className="char">K</span>
+                            <span className="char">u</span>
+                            <span className="char">R</span>
+                            <span className="char">O</span>
+                            <span className="char">E</span>
+                            <span className="char">u</span>
+                            <span className="char">1</span>
                         </div>
                     </div>
                 </section>
 
                 <section id="about" className='about'>
-                    <div style={{ width: "80%", margin: "auto" }}>
+                    <div style={{ width: "1000px", margin: "auto" }}>
                         <h2 className="about-title">
                             <span>A</span><span>b</span><span>o</span><span>u</span><span>t</span>
                         </h2>
+                        <div>私について</div>
                         <div className='style1'>
                             <div className="style3">
                                 <div className='style4'>
@@ -185,9 +190,12 @@ export default function Home() {
                 <section id="works" className='works'>
                     <div className='style1'>
                         <h2 style={{ color: "#333" }}>Works</h2>
-                        <div></div>
+                        <div>気に入ってる＆うれしかったもの</div>
                     </div>
                     <div style={{ textAlign: "center", margin: "20px 0" }}>
+                        <img src="/images/works/works_1.png" style={{width:"500px"}}></img>
+                        <img src="/images/works/works_2.jpg" style={{width:"500px"}}></img>
+                        <img src="/images/works/works_3.jpg" style={{width:"500px"}}></img>
                         <Link href="/works" onClick={(e) => handleLinkClick(e, '/works')}>
                             <button className="btn1">VIEW MORE</button>
                         </Link>
