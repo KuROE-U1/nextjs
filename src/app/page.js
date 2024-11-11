@@ -79,7 +79,7 @@ export default function Home() {
             });
 
             // `.about`のクリップパスアニメーション
-            gsap.to(".about", {
+            gsap.to("#about", {
                 clipPath: "polygon(0% 0px, 100% 0vh, 100% 100%, 0px 100%)",
                 scrollTrigger: {
                     trigger: ".first-view",  // トリガーを`.about`に設定
@@ -98,7 +98,7 @@ export default function Home() {
         const tl = gsap.timeline({
             // delay: 0.6,                                 // 表示遅延
             scrollTrigger: {
-                trigger: ".top",
+                trigger: "#top",
                 start: "top+=15% top",
                 end: "center top",
                 toggleActions: "none play none reset",
@@ -146,7 +146,7 @@ export default function Home() {
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             </Head>
             <article>
-                <section id="top" className='top' style={{ position: "sticky", top: "0" }}>
+                <section id="top">
                     <div className='first-view' ref={textRef}>
                         <video width="320" height="240" className='test' autoPlay loop muted playsInline style={{ objectFit: 'cover', width: '100%', height: '100%', position: 'absolute', filter: 'blur(5px) grayscale(50%)', clipPath: 'inset(3px)' }}>
                             <source src={videoUrl} type="video/mp4" /> 
@@ -164,8 +164,8 @@ export default function Home() {
                     </div>
                 </section>
 
-                <section id="about" className='about'>
-                    <div style={{ width: "1000px", margin: "auto" }}>
+                <section id="about">
+                    <div className="about__wrapper">
                         <h2 className="about-title">
                             <span>A</span><span>b</span><span>o</span><span>u</span><span>t</span>
                         </h2>
@@ -187,18 +187,20 @@ export default function Home() {
                     </div>
                 </section>
 
-                <section id="works" className='works'>
-                    <div className='style1'>
-                        <h2 style={{ color: "#333" }}>Works</h2>
-                        <div>気に入ってる＆うれしかったもの</div>
-                    </div>
-                    <div style={{ textAlign: "center", margin: "20px 0" }}>
-                        <img src="/images/works/works_1.png" style={{width:"500px"}}></img>
-                        <img src="/images/works/works_2.jpg" style={{width:"500px"}}></img>
-                        <img src="/images/works/works_3.jpg" style={{width:"500px"}}></img>
-                        <Link href="/works" onClick={(e) => handleLinkClick(e, '/works')}>
-                            <button className="btn1">VIEW MORE</button>
-                        </Link>
+                <section id="works">
+                    <div className="works__wrapper">
+                        <div className='style1'>
+                            <h2 style={{ color: "#333" }}>Works</h2>
+                            <div>PICK UP WORKS</div>
+                        </div>
+                        <div style={{ textAlign: "center", margin: "20px 0" }}>
+                            <img src="/images/works/works_1.png" style={{width:"100%"}}></img>
+                            <img src="/images/works/works_2.jpg" style={{width:"100%"}}></img>
+                            <img src="/images/works/works_3.jpg" style={{width:"100%"}}></img>
+                            <Link href="/works" onClick={(e) => handleLinkClick(e, '/works')}>
+                                <button className="btn1">VIEW MORE</button>
+                            </Link>
+                        </div>
                     </div>
                 </section>
 

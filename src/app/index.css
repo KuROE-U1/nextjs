@@ -1,3 +1,8 @@
+#top {
+    position: sticky;
+    top: 0;
+}
+
 #works {
     background-color: #FFF;
     padding:50px 0;
@@ -139,4 +144,39 @@ h4 {
     opacity: 0;                 /* 初期の透明度 */
     transform: translateY(10px); /* 初期位置を下に設定 */
     display: inline-block;       /* 各文字を個別に扱うため */
+}
+.about__wrapper {
+    width: 1000px;
+    margin: auto;
+}
+/* タブレット用（376px ~ 960px） */
+@media screen and (max-width: 960px)  {
+    .about__wrapper {
+
+    }
+}
+
+/* スマホ用（1px ~ 376px） */
+@media screen and (max-width: 375px)  {
+    .about__wrapper {
+        width: 100%;
+    }
+}
+
+.works__wrapper {
+    width: 1000px;
+    margin: auto;
+}
+/* タブレット用（376px ~ 960px） */
+@media screen and (max-width: 960px)  {
+    .works__wrapper {
+
+    }
+}
+
+/* スマホ用（1px ~ 376px） */
+@media screen and (max-width: 375px)  {
+    .works__wrapper {
+        width: 100%;
+    }
 }
