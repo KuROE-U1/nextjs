@@ -146,7 +146,7 @@ h4 {
     display: inline-block;       /* 各文字を個別に扱うため */
 }
 .about__wrapper {
-    width: 1000px;
+    width: 1200px;
     margin: auto;
 }
 /* タブレット用（376px ~ 960px） */
@@ -164,7 +164,7 @@ h4 {
 }
 
 .works__wrapper {
-    width: 1000px;
+    width: 1400px;
     margin: auto;
 }
 /* タブレット用（376px ~ 960px） */

@@ -194,9 +194,18 @@ export default function Home() {
                             <div>PICK UP WORKS</div>
                         </div>
                         <div style={{ textAlign: "center", margin: "20px 0" }}>
-                            <img src="/images/works/works_1.png" style={{width:"100%"}}></img>
-                            <img src="/images/works/works_2.jpg" style={{width:"100%"}}></img>
-                            <img src="/images/works/works_3.jpg" style={{width:"100%"}}></img>
+                            <a href="" style={{ display:"flex" }}>
+                                <div style={{ width:"750px" }} ><img src="/images/works/works_1.png" style={{width:"100%"}}></img></div>
+                                <div style={{ width:"650px" }} ></div>
+                            </a>
+                            <a href="" style={{ display:"flex" }}>
+                                <div style={{ width:"650px" }} ></div>
+                                <div style={{ width:"750px" }} ><img src="/images/works/works_2.jpg" style={{width:"100%"}}></img></div>
+                            </a>
+                            <a href="" style={{ display:"flex" }}>
+                                <div style={{ width:"750px" }} ><img src="/images/works/works_3.jpg" style={{width:"100%"}}></img></div>
+                                <div style={{ width:"650px" }} ></div>
+                            </a>
                             <Link href="/works" onClick={(e) => handleLinkClick(e, '/works')}>
                                 <button className="btn1">VIEW MORE</button>
                             </Link>
