@@ -193,12 +193,14 @@ export default function Home() {
                             <h2 style={{ color: "#333" }}>Works</h2>
                             <div>PICK UP WORKS</div>
                         </div>
-                        <div style={{ margin: "20px 0" }}>
+                        <div className="works__contents">
                             <a href="#" style={{ display:"flex", marginBottom:"100px" }}>
                                 <div style={{ width:"100%" }} ><img src="/images/works/works_1.png" style={{width:"100%"}}></img></div>
                                 <div style={{ width:"100%" }} >
-                                    Private Work
-                                    <h3>CH4NGE</h3>
+                                    <div>
+                                        Private Work
+                                        <h3>CH4NGE</h3>
+                                    </div>
                                 </div>
                             </a>
                             <a href="#" style={{ display:"flex", marginBottom:"100px" }}>

@@ -45,14 +45,15 @@ h4 {
 }
 
 
-/* 絶対に名前変えろ */
+
 .works__title {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 50px;
 }
-
+/* 絶対に名前変えろ */
 .style2 {
     display: inline-flex;
     width: 100px;
@@ -146,7 +147,7 @@ h4 {
     display: inline-block;       /* 各文字を個別に扱うため */
 }
 .about__wrapper {
-    width: 1200px;
+    /* max-width: 1200px; */
     margin: auto;
 }
 /* タブレット用（376px ~ 960px） */
