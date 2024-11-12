@@ -189,22 +189,31 @@ export default function Home() {
 
                 <section id="works">
                     <div className="works__wrapper">
-                        <div className='style1'>
+                        <div className='works__title'>
                             <h2 style={{ color: "#333" }}>Works</h2>
                             <div>PICK UP WORKS</div>
                         </div>
-                        <div style={{ textAlign: "center", margin: "20px 0" }}>
-                            <a href="" style={{ display:"flex" }}>
-                                <div style={{ width:"750px" }} ><img src="/images/works/works_1.png" style={{width:"100%"}}></img></div>
-                                <div style={{ width:"650px" }} ></div>
+                        <div style={{ margin: "20px 0" }}>
+                            <a href="#" style={{ display:"flex", marginBottom:"100px" }}>
+                                <div style={{ width:"100%" }} ><img src="/images/works/works_1.png" style={{width:"100%"}}></img></div>
+                                <div style={{ width:"100%" }} >
+                                    Private Work
+                                    <h3>CH4NGE</h3>
+                                </div>
                             </a>
-                            <a href="" style={{ display:"flex" }}>
-                                <div style={{ width:"650px" }} ></div>
-                                <div style={{ width:"750px" }} ><img src="/images/works/works_2.jpg" style={{width:"100%"}}></img></div>
+                            <a href="#" style={{ display:"flex", marginBottom:"100px" }}>
+                                <div style={{ width:"100%" }} >
+                                    Private Work
+                                    <h3>エンヴィーベイビー</h3>
+                                </div>
+                                <div style={{ width:"100%" }} ><img src="/images/works/works_2.jpg" style={{width:"100%"}}></img></div>
                             </a>
-                            <a href="" style={{ display:"flex" }}>
-                                <div style={{ width:"750px" }} ><img src="/images/works/works_3.jpg" style={{width:"100%"}}></img></div>
-                                <div style={{ width:"650px" }} ></div>
+                            <a href="#" style={{ display:"flex", marginBottom:"100px" }}>
+                                <div style={{ width:"100%" }} ><img src="/images/works/works_3.jpg" style={{width:"100%"}}></img></div>
+                                <div style={{ width:"100%" }} >
+                                    Client Work
+                                    <h3>RAD DOGS</h3>
+                                </div>
                             </a>
                             <Link href="/works" onClick={(e) => handleLinkClick(e, '/works')}>
                                 <button className="btn1">VIEW MORE</button>

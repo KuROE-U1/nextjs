@@ -46,7 +46,7 @@ h4 {
 
 
 /* 絶対に名前変えろ */
-.style1 {
+.works__title {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -164,7 +164,7 @@ h4 {
 }
 
 .works__wrapper {
-    width: 1400px;
+    max-width: 1200px;
     margin: auto;
 }
 /* タブレット用（376px ~ 960px） */
