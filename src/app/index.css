@@ -181,3 +181,49 @@ h4 {
         width: 100%;
     }
 }
+
+
+.works__item_column,
+.works__item_column-reverse {
+    display: flex;
+    margin-bottom: 100px;
+}
+/* タブレット用（376px ~ 960px） */
+@media screen and (max-width: 960px)  {
+    .works__item_column {
+        flex-direction: column;
+    }
+    .works__item_column-reverse {
+        flex-direction: column-reverse;
+    }
+}
+
+/* -----動く棒----- */
+.bar {
+    width: 2px;
+    height: 50vh;
+    background-color: #FFF;
+    mix-blend-mode: difference;
+    position: absolute;
+    left: 5%;
+    bottom: 0;
+    animation: toggleBar 2.5s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+    z-index: 10000;
+}
+@keyframes toggleBar {
+    0% {
+        clip-path: inset(0 0 100% 0);
+    }
+    40% {
+        clip-path: inset(0 0 0 0);
+    }
+    40.1% {
+        clip-path: inset(0 0 0 0);
+    }
+    80% {
+        clip-path: inset(100% 0 0 0);
+    }
+    100% {
+        clip-path: inset(100% 0 0 0);
+    }
+}

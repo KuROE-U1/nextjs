@@ -148,6 +148,7 @@ export default function Home() {
             <article>
                 <section id="top">
                     <div className='first-view' ref={textRef}>
+                    <div className='bar'></div>
                         <video width="320" height="240" className='test' autoPlay loop muted playsInline style={{ objectFit: 'cover', width: '100%', height: '100%', position: 'absolute', filter: 'blur(5px) grayscale(50%)', clipPath: 'inset(3px)' }}>
                             <source src={videoUrl} type="video/mp4" /> 
                             Your browser does not support the video tag.
@@ -193,24 +194,22 @@ export default function Home() {
                             <h2 style={{ color: "#333" }}>Works</h2>
                             <div>PICK UP WORKS</div>
                         </div>
-                        <div className="works__contents">
-                            <a href="#" style={{ display:"flex", marginBottom:"100px" }}>
+                        <div style={{ margin: "20px 0" }}>
+                            <a href="#" className='works__item_column'>
                                 <div style={{ width:"100%" }} ><img src="/images/works/works_1.png" style={{width:"100%"}}></img></div>
                                 <div style={{ width:"100%" }} >
-                                    <div>
-                                        Private Work
-                                        <h3>CH4NGE</h3>
-                                    </div>
+                                    Private Work
+                                    <h3>CH4NGE</h3>
                                 </div>
                             </a>
-                            <a href="#" style={{ display:"flex", marginBottom:"100px" }}>
+                            <a href="#" className='works__item_column-reverse'>
                                 <div style={{ width:"100%" }} >
                                     Private Work
                                     <h3>エンヴィーベイビー</h3>
                                 </div>
                                 <div style={{ width:"100%" }} ><img src="/images/works/works_2.jpg" style={{width:"100%"}}></img></div>
                             </a>
-                            <a href="#" style={{ display:"flex", marginBottom:"100px" }}>
+                            <a href="#" className='works__item_column'>
                                 <div style={{ width:"100%" }} ><img src="/images/works/works_3.jpg" style={{width:"100%"}}></img></div>
                                 <div style={{ width:"100%" }} >
                                     Client Work
