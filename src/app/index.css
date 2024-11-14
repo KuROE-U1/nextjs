@@ -15,7 +15,7 @@
     background-color: #FFF;
     padding: 50px 0;
     position: relative;
-    clip-path: polygon(0% 50px, 100% 100vh, 100% 100%, 0px 100%);
+    /* clip-path: polygon(0% 50px, 100% 100vh, 100% 100%, 0px 100%); */
 }
 
 #contact {
@@ -199,25 +199,25 @@ h4 {
 }
 
 /* -----動く棒----- */
-.bar {
-    width: 2px;
-    height: 50vh;
+.scrollbar {
+    width: 1.5px;
+    height: 100%;
     background-color: #FFF;
     mix-blend-mode: difference;
     position: absolute;
-    left: 5%;
-    bottom: 0;
-    animation: toggleBar 2.5s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+    /* left: 5%;
+    bottom: 0; */
+    animation: toggleBar 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
     z-index: 10000;
 }
 @keyframes toggleBar {
     0% {
         clip-path: inset(0 0 100% 0);
     }
-    40% {
+    35% {
         clip-path: inset(0 0 0 0);
     }
-    40.1% {
+    45% {
         clip-path: inset(0 0 0 0);
     }
     80% {
@@ -226,4 +226,36 @@ h4 {
     100% {
         clip-path: inset(100% 0 0 0);
     }
+}
+
+.scroll {
+    position: absolute;
+    z-index: 3;
+    mix-blend-mode: difference;
+    left: 5%;
+    top: 50%;
+    height: 50%;
+}
+
+.scroll-text {
+    color: #FFF;
+    mix-blend-mode: difference;
+    position: absolute;
+    left: 5%;
+    bottom: 0;
+    z-index: 10000;
+}
+
+.scrolltext {
+    position: relative;
+}
+
+.scrolltext p {
+    color: #FFF;
+    writing-mode: vertical-rl;
+    position: absolute;
+    font-family: 'Josefin Sans', sans-serif;
+    letter-spacing: .5px;
+    font-weight:bold;
+    left: 5px;
 }

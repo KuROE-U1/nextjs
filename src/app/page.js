@@ -78,17 +78,17 @@ export default function Home() {
                 }
             });
 
-            // `.about`のクリップパスアニメーション
-            gsap.to("#about", {
-                clipPath: "polygon(0% 0px, 100% 0vh, 100% 100%, 0px 100%)",
-                scrollTrigger: {
-                    trigger: ".first-view",  // トリガーを`.about`に設定
-                    start: "top top", // ページ下部からスクロール開始
-                    end: "bottom center",
-                    scrub: true,
-                    // markers: true,
-                }
-            });
+            // // `.about`のクリップパスアニメーション
+            // gsap.to("#about", {
+            //     clipPath: "polygon(0% 0px, 100% 0vh, 100% 100%, 0px 100%)",
+            //     scrollTrigger: {
+            //         trigger: ".first-view",  // トリガーを`.about`に設定
+            //         start: "top top", // ページ下部からスクロール開始
+            //         end: "bottom center",
+            //         scrub: true,
+            //         // markers: true,
+            //     }
+            // });
 
         }
     }, []);
@@ -146,21 +146,28 @@ export default function Home() {
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             </Head>
             <article>
+                <div className='scroll'>
+                    <div className='scrollbar'></div>
+                    <div className="scrolltext"><p>Scroll</p></div>
+                </div>
                 <section id="top">
                     <div className='first-view' ref={textRef}>
-                    <div className='bar'></div>
+
                         <video width="320" height="240" className='test' autoPlay loop muted playsInline style={{ objectFit: 'cover', width: '100%', height: '100%', position: 'absolute', filter: 'blur(5px) grayscale(50%)', clipPath: 'inset(3px)' }}>
                             <source src={videoUrl} type="video/mp4" /> 
                             Your browser does not support the video tag.
                         </video>
                         <div className="text-animation logo">
-                            <span className="char">K</span>
+                            <span className="char">M</span>
+                            <span className="char">.</span>
+                            <span className="char">H</span>
+                            {/* <span className="char">K</span>
                             <span className="char">u</span>
                             <span className="char">R</span>
                             <span className="char">O</span>
                             <span className="char">E</span>
                             <span className="char">u</span>
-                            <span className="char">1</span>
+                            <span className="char">1</span> */}
                         </div>
                     </div>
                 </section>
@@ -174,8 +181,10 @@ export default function Home() {
                         <div className='style1'>
                             <div className="style3">
                                 <div className='style4'>
-                                    <img src="/images/icon.jpg" className='icon'></img>
-                                    <h4 style={{ marginTop: "10px", color: "#0AF" }}>KuROEu1</h4>
+                                    {/* <img src="/images/icon.jpg" className='icon'></img> */}
+                                    <img src="/images/icon_white.png" className='icon'></img>
+                                    {/* <h4 style={{ marginTop: "10px", color: "#0AF" }}>KuROEu1</h4> */}
+                                    <h4 style={{ marginTop: "10px", color: "#0AF" }}>M.H</h4>
                                 </div>
                                 <div className='style5'>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</div>
                             </div>
