@@ -127,7 +127,8 @@ const Header = () => {
             <header className="white" id="header">
                 <div className="icon-area2">
                     <Link href="/" onClick={(e) => handleLinkClick(e, '/')}>
-                        M.H
+                        {/* M.H */}
+                        KuROEu1
                     </Link>
                 </div>
                 <nav>

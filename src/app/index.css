@@ -107,8 +107,12 @@ h4 {
     }
 }
 
-.about-title {
-    /* overflow: hidden; */
+.about__title {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
 }
 
 .about-char {
@@ -142,7 +146,7 @@ h4 {
 }
 
 .about-title span {
-    opacity: 0;                 /* 初期の透明度 */
+    /* opacity: 0;                  */
     transform: translateY(10px); /* 初期位置を下に設定 */
     display: inline-block;       /* 各文字を個別に扱うため */
 }
@@ -165,7 +169,7 @@ h4 {
 }
 
 .works__wrapper {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: auto;
 }
 /* タブレット用（376px ~ 960px） */

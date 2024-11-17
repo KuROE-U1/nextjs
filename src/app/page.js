@@ -93,27 +93,27 @@ export default function Home() {
         }
     }, []);
 
-    // `.about-title`の文字アニメーション
-    useEffect(() => {
-        const tl = gsap.timeline({
-            // delay: 0.6,                                 // 表示遅延
-            scrollTrigger: {
-                trigger: "#top",
-                start: "top+=15% top",
-                end: "center top",
-                toggleActions: "none play none reset",
-                markers: true,
-            }
-        });
+    // // `.about-title`の文字アニメーション
+    // useEffect(() => {
+    //     const tl = gsap.timeline({
+    //         // delay: 0.6,                                 // 表示遅延
+    //         scrollTrigger: {
+    //             trigger: "#top",
+    //             start: "top+=15% top",
+    //             end: "center top",
+    //             toggleActions: "none play none reset",
+    //             markers: true,
+    //         }
+    //     });
     
-        tl.to(".about-title span", {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,                              // 全文字表示が終わるまで 0.8s
-            ease: "custom",                             // カスタムイージング 上部に記載
-            stagger: 0.05,                              // 各文字に遅延 0.05s
-        });
-    }, []);
+    //     tl.to(".about-title span", {
+    //         opacity: 1,
+    //         y: 0,
+    //         duration: 0.8,                              // 全文字表示が終わるまで 0.8s
+    //         ease: "custom",                             // カスタムイージング 上部に記載
+    //         stagger: 0.05,                              // 各文字に遅延 0.05s
+    //     });
+    // }, []);
 
     // ページ遷移エフェクト
     const handleLinkClick = (e, href) => {
@@ -158,33 +158,33 @@ export default function Home() {
                             Your browser does not support the video tag.
                         </video>
                         <div className="text-animation logo">
-                            <span className="char">M</span>
+                            {/* <span className="char">M</span>
                             <span className="char">.</span>
-                            <span className="char">H</span>
-                            {/* <span className="char">K</span>
+                            <span className="char">H</span> */}
+                            <span className="char">K</span>
                             <span className="char">u</span>
                             <span className="char">R</span>
                             <span className="char">O</span>
                             <span className="char">E</span>
                             <span className="char">u</span>
-                            <span className="char">1</span> */}
+                            <span className="char">1</span>
                         </div>
                     </div>
                 </section>
 
                 <section id="about">
                     <div className="about__wrapper">
-                        <h2 className="about-title">
-                            <span>A</span><span>b</span><span>o</span><span>u</span><span>t</span>
-                        </h2>
-                        <div>私について</div>
+                        <div className="about__title">
+                            <h2 style={{ color: "#333" }}>About</h2>
+                            <div>私について</div>
+                        </div>
                         <div className='style1'>
                             <div className="style3">
                                 <div className='style4'>
-                                    {/* <img src="/images/icon.jpg" className='icon'></img> */}
-                                    <img src="/images/icon_white.png" className='icon'></img>
-                                    {/* <h4 style={{ marginTop: "10px", color: "#0AF" }}>KuROEu1</h4> */}
-                                    <h4 style={{ marginTop: "10px", color: "#0AF" }}>M.H</h4>
+                                    <img src="/images/icon.jpg" className='icon'></img>
+                                    {/* <img src="/images/icon_white.png" className='icon'></img> */}
+                                    <h4 style={{ marginTop: "10px", color: "#0AF" }}>KuROEu1</h4>
+                                    {/* <h4 style={{ marginTop: "10px", color: "#0AF" }}>M.H</h4> */}
                                 </div>
                                 <div className='style5'>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</div>
                             </div>
@@ -205,24 +205,30 @@ export default function Home() {
                         </div>
                         <div style={{ margin: "20px 0" }}>
                             <a href="#" className='works__item_column'>
-                                <div style={{ width:"100%" }} ><img src="/images/works/works_1.png" style={{width:"100%"}}></img></div>
-                                <div style={{ width:"100%" }} >
-                                    Private Work
-                                    <h3>CH4NGE</h3>
+                                <div style={{ width:"52%" }} ><img src="/images/works/works_1.png" style={{width:"100%"}}></img></div>
+                                <div style={{ display: "flex", width: "48%",alignItems: "center",justifyContent:"center" }} >
+                                    <div style={{  }}>
+                                        Private Work
+                                        <h3>CH4NGE</h3>
+                                    </div>
                                 </div>
                             </a>
                             <a href="#" className='works__item_column-reverse'>
-                                <div style={{ width:"100%" }} >
-                                    Private Work
-                                    <h3>エンヴィーベイビー</h3>
+                                <div style={{ display: "flex", width: "48%", alignItems: "center",justifyContent:"center" }} >
+                                    <div style={{  }}>
+                                        Private Work
+                                        <h3>エンヴィーベイビー</h3>
+                                    </div>
                                 </div>
-                                <div style={{ width:"100%" }} ><img src="/images/works/works_2.jpg" style={{width:"100%"}}></img></div>
+                                <div style={{ width:"52%" }} ><img src="/images/works/works_2.jpg" style={{width:"100%"}}></img></div>
                             </a>
                             <a href="#" className='works__item_column'>
-                                <div style={{ width:"100%" }} ><img src="/images/works/works_3.jpg" style={{width:"100%"}}></img></div>
-                                <div style={{ width:"100%" }} >
+                                <div style={{ width:"52%" }} ><img src="/images/works/works_3.jpg" style={{width:"100%"}}></img></div>
+                                <div style={{ display: "flex", width: "48%",alignItems: "center", justifyContent:"center" }} >
+                                <div style={{  }}>
                                     Client Work
                                     <h3>RAD DOGS</h3>
+                                    </div>
                                 </div>
                             </a>
                             <Link href="/works" onClick={(e) => handleLinkClick(e, '/works')}>
