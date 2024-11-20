@@ -16,7 +16,8 @@
     "next-video": "^1.2.0",
     "next-videos": "1.4.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "three": "^0.170.0"
   },
   "devDependencies": {
     "@types/node": "22.7.4",
