@@ -43,17 +43,18 @@ const ModelPage = () => {
     const modelGroup = new THREE.Group();
     scene.add(modelGroup);
 
-    // 環境変数からベースURLを取得
-    const baseUrl = process.env.REACT_APP_BASE_URL || '';
-
-    // GLTFファイルの絶対パスを構築
-    const modelPath = `${baseUrl}/models/iPhone.glb`;
-
     // GLTFファイルの読み込み
     const loader = new GLTFLoader();
+    
+    // 環境に応じたGLBファイルのパスを設定
+    const isGitHubPages = window.location.hostname === "kuroe-u1.github.io";
+    const modelPath = isGitHubPages 
+      ? "https://github.com/KuROE-U1/nextjs/raw/d4ed73a00fa9e87cf5e3307c607fd70fbe6180ed/public/models/iPhone.glb" 
+      : "/models/iPhone.glb";
+
     loader.load(modelPath, (gltf) => {
       const model = gltf.scene;
-
+      
       // モデルのバウンディングボックスを計算
       const box = new THREE.Box3().setFromObject(model);
       const center = box.getCenter(new THREE.Vector3());
@@ -73,27 +74,34 @@ const ModelPage = () => {
       mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
       mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
     }
+    
     window.addEventListener('mousemove', onMouseMove);
 
     // アニメーションループ
     function tick() {
       requestAnimationFrame(tick);
-
+      
+      // モデルの回転を真ん中の軸で行う
       if (modelGroup) {
         const targetRotationX = THREE.MathUtils.degToRad(mouse.y * 10);
         const targetRotationY = THREE.MathUtils.degToRad(mouse.x * 20);
 
+        // 現在の回転と目標の回転の差を計算
         const diffX = targetRotationX - modelGroup.rotation.x;
         const diffY = targetRotationY - modelGroup.rotation.y;
 
+        // 緩やかに回転を適用
         modelGroup.rotation.x += diffX * 0.05;
         modelGroup.rotation.y += diffY * 0.05;
 
+        // 回転を-45度から45度に制限
         modelGroup.rotation.x = THREE.MathUtils.clamp(modelGroup.rotation.x, -Math.PI / 4, Math.PI / 4);
         modelGroup.rotation.y = THREE.MathUtils.clamp(modelGroup.rotation.y, -Math.PI / 4, Math.PI / 4);
       }
+      
       renderer.render(scene, camera);
     }
+    
     tick();
 
     // ウィンドウのリサイズ対応
