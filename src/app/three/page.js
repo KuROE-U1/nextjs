@@ -27,21 +27,34 @@ const ModelPage = () => {
     const loader = new GLTFLoader();
     let model; // モデルを外部で参照できるようにする
 
-    loader.load(
-      '/models/iphone.glb', // モデルのパス
-      (gltf) => {
-        model = gltf.scene;
-        scene.add(model);
+    // GLBファイルを取得
+    fetch('/models/iphone.glb')
+      .then(response => response.blob())
+      .then(blob => {
+        const url = URL.createObjectURL(blob);
+        
+        loader.load(
+          url,
+          (gltf) => {
+            model = gltf.scene;
+            scene.add(model);
 
-        // モデルの位置やスケールの調整
-        model.position.set(0, -1, 0);
-        model.scale.set(1, 1, 1);
-      },
-      undefined,
-      (error) => {
-        console.error('モデルの読み込みに失敗しました', error);
-      }
-    );
+            // モデルの位置やスケールの調整
+            model.position.set(0, -1, 0);
+            model.scale.set(1, 1, 1);
+
+            // URLオブジェクトの解放
+            URL.revokeObjectURL(url);
+          },
+          undefined,
+          (error) => {
+            console.error('モデルの読み込みに失敗しました', error);
+          }
+        );
+      })
+      .catch(error => {
+        console.error('GLBファイルの取得に失敗しました', error);
+      });
 
     // カメラの位置を調整
     camera.position.z = 2;
