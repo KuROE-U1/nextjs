@@ -38,7 +38,7 @@ const ModelPage = () => {
     // GLTFファイルの読み込み
     let model;
     const loader = new GLTFLoader();
-    loader.load('/models/iphone.glb', (gltf) => {
+    loader.load('/models/iPhone.glb', (gltf) => {
       model = gltf.scene;
       scene.add(model);
     }, undefined, (error) => {
