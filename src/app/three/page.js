@@ -20,19 +20,14 @@ const ModelPage = () => {
     const ambientLight = new THREE.AmbientLight(0xFFFFFF, 2);
     scene.add(ambientLight);
 
-    // 光源
-    const spotLight = new THREE.SpotLight(0x00FFFF, 10);
-    spotLight.position.set(2, 1, 2);
-    scene.add(spotLight);
-
-    const spotLight2 = new THREE.SpotLight(0xFFFFFF, 10);
-    spotLight2.position.set(-2, 1, 2);
-    scene.add(spotLight2);
+    // const spotLight2 = new THREE.SpotLight(0xFFFFFF, 10);
+    // spotLight2.position.set(0, 1, 2);
+    // scene.add(spotLight2);
 
     // レンダラー
     const renderer = new THREE.WebGLRenderer({
-      alpha: true,
-      antialias: true
+        alpha: true,
+        antialias: true
     });
     renderer.setClearColor(0x000000, 0);
     renderer.setPixelRatio(window.devicePixelRatio);
@@ -45,14 +40,7 @@ const ModelPage = () => {
 
     // GLTFファイルの読み込み
     const loader = new GLTFLoader();
-    
-    // 環境に応じたGLBファイルのパスを設定
-    const isGitHubPages = window.location.hostname === "kuroe-u1.github.io";
-    const modelPath = isGitHubPages 
-      ? "https://github.com/KuROE-U1/nextjs/raw/d4ed73a00fa9e87cf5e3307c607fd70fbe6180ed/public/models/iPhone.glb" 
-      : "/models/iPhone.glb";
-
-    loader.load(modelPath, (gltf) => {
+    loader.load('/models/iPhone.glb', (gltf) => {
       const model = gltf.scene;
       
       // モデルのバウンディングボックスを計算
@@ -60,12 +48,12 @@ const ModelPage = () => {
       const center = box.getCenter(new THREE.Vector3());
 
       // モデルを中心に移動
-      model.position.sub(center);
+        model.position.sub(center);
 
       // グループにモデルを追加
-      modelGroup.add(model);
+        modelGroup.add(model);
     }, undefined, (error) => {
-      console.error('モデルの読み込みに失敗しました', error);
+        console.error('モデルの読み込みに失敗しました', error);
     });
 
     // マウスの位置を追跡
@@ -74,7 +62,6 @@ const ModelPage = () => {
       mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
       mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
     }
-    
     window.addEventListener('mousemove', onMouseMove);
 
     // アニメーションループ
@@ -83,8 +70,8 @@ const ModelPage = () => {
       
       // モデルの回転を真ん中の軸で行う
       if (modelGroup) {
-        const targetRotationX = THREE.MathUtils.degToRad(mouse.y * 10);
-        const targetRotationY = THREE.MathUtils.degToRad(mouse.x * 20);
+        const targetRotationX = THREE.MathUtils.degToRad(mouse.y * -20);
+        const targetRotationY = THREE.MathUtils.degToRad(mouse.x * 40);
 
         // 現在の回転と目標の回転の差を計算
         const diffX = targetRotationX - modelGroup.rotation.x;
@@ -95,13 +82,11 @@ const ModelPage = () => {
         modelGroup.rotation.y += diffY * 0.05;
 
         // 回転を-45度から45度に制限
-        modelGroup.rotation.x = THREE.MathUtils.clamp(modelGroup.rotation.x, -Math.PI / 4, Math.PI / 4);
-        modelGroup.rotation.y = THREE.MathUtils.clamp(modelGroup.rotation.y, -Math.PI / 4, Math.PI / 4);
+        modelGroup.rotation.x = THREE.MathUtils.clamp(modelGroup.rotation.x, -Math.PI/4, Math.PI/4);
+        modelGroup.rotation.y = THREE.MathUtils.clamp(modelGroup.rotation.y, -Math.PI/4, Math.PI/4);
       }
-      
       renderer.render(scene, camera);
     }
-    
     tick();
 
     // ウィンドウのリサイズ対応
