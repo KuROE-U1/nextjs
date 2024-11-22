@@ -1,125 +1,108 @@
 "use client";
 
-import { useEffect, useRef } from 'react';
-import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { useEffect, useRef } from "react";
+import * as THREE from "three";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 const ThreeCanvas = ({ modelPath }) => {
   const mountRef = useRef(null);
 
   useEffect(() => {
-    // シーンの作成
     const scene = new THREE.Scene();
 
     // カメラの作成
     const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(0, 2, 4);
-    camera.lookAt(new THREE.Vector3(0, 1, 0));
+    camera.position.set(0, 0, 5); // 正面からモデルを見る位置
 
-    // 環境光
-    const ambientLight = new THREE.AmbientLight(0xFFFFFF, 2);
-    scene.add(ambientLight);
-
-    // レンダラー
-    const renderer = new THREE.WebGLRenderer({
-      alpha: true,
-      antialias: true,
-    });
-    renderer.setClearColor(0x000000, 0);
-    renderer.setPixelRatio(window.devicePixelRatio);
+    // レンダラーの設定
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setClearColor(0x000000, 0); // 背景を透明に設定
 
-    // マウントされたDOM要素にレンダラーを追加
+    // レンダラーをマウント
     if (mountRef.current) {
       mountRef.current.appendChild(renderer.domElement);
     }
 
-    // グループを作成して、モデルを中心に配置
+    // 環境光
+    const ambientLight = new THREE.AmbientLight(0xffffff, 2);
+    scene.add(ambientLight);
+
+    // モデルグループ
     const modelGroup = new THREE.Group();
     scene.add(modelGroup);
 
-    // GLTFファイルの読み込み
+    // モデルの読み込み
     const loader = new GLTFLoader();
     loader.load(
       modelPath,
       (gltf) => {
         const model = gltf.scene;
 
-        // モデルのバウンディングボックスを計算
+        // モデルの中心を原点に移動
         const box = new THREE.Box3().setFromObject(model);
         const center = box.getCenter(new THREE.Vector3());
-
-        // モデルを中心に移動
+        const size = box.getSize(new THREE.Vector3());
         model.position.sub(center);
 
-        // グループにモデルを追加
+        // モデルのスケールを調整
+        const maxDimension = Math.max(size.x, size.y, size.z);
+        const scale = 3 / maxDimension; // モデルの目標サイズを2に設定
+        model.scale.set(scale, scale, scale);
+
         modelGroup.add(model);
       },
       undefined,
-      (error) => {
-        console.error('モデルの読み込みに失敗しました', error);
-      }
+      (error) => console.error("モデルの読み込みに失敗しました", error)
     );
 
-    // マウスの位置を追跡
+    // マウスによる回転
     const mouse = new THREE.Vector2();
-    function onMouseMove(event) {
+    const rotationSpeed = 0.05;
+
+    const onMouseMove = (event) => {
+      // マウス位置を正規化
       mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
       mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-    }
-    window.addEventListener('mousemove', onMouseMove);
+    };
+    window.addEventListener("mousemove", onMouseMove);
 
     // アニメーションループ
-    function tick() {
-      requestAnimationFrame(tick);
+    const tick = () => {
+      // マウス位置に基づいてモデルを回転
+      const targetRotationX = THREE.MathUtils.degToRad(mouse.y * -20);
+      const targetRotationY = THREE.MathUtils.degToRad(mouse.x * 40);
 
-      // モデルの回転を真ん中の軸で行う
-      if (modelGroup) {
-        const targetRotationX = THREE.MathUtils.degToRad(mouse.y * -20);
-        const targetRotationY = THREE.MathUtils.degToRad(mouse.x * 40);
+      modelGroup.rotation.x += (targetRotationX - modelGroup.rotation.x) * rotationSpeed;
+      modelGroup.rotation.y += (targetRotationY - modelGroup.rotation.y) * rotationSpeed;
 
-        // 現在の回転と目標の回転の差を計算
-        const diffX = targetRotationX - modelGroup.rotation.x;
-        const diffY = targetRotationY - modelGroup.rotation.y;
-
-        // 緩やかに回転を適用
-        modelGroup.rotation.x += diffX * 0.05;
-        modelGroup.rotation.y += diffY * 0.05;
-
-        // 回転を-45度から45度に制限
-        modelGroup.rotation.x = THREE.MathUtils.clamp(modelGroup.rotation.x, -Math.PI / 4, Math.PI / 4);
-        modelGroup.rotation.y = THREE.MathUtils.clamp(modelGroup.rotation.y, -Math.PI / 4, Math.PI / 4);
-      }
+      // レンダリング
       renderer.render(scene, camera);
-    }
+
+      requestAnimationFrame(tick);
+    };
     tick();
 
-    // ウィンドウのリサイズ対応
+    // リサイズ対応
     const handleResize = () => {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-
-      camera.aspect = width / height;
+      camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
-
-      renderer.setSize(width, height);
+      renderer.setSize(window.innerWidth, window.innerHeight);
     };
-
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     // クリーンアップ
     return () => {
-      window.removeEventListener('resize', handleResize);
-      window.removeEventListener('mousemove', onMouseMove);
-
-      // mountRef.current の存在を確認してから削除
-      if (mountRef.current && renderer.domElement) {
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("resize", handleResize);
+      if (mountRef.current) {
         mountRef.current.removeChild(renderer.domElement);
       }
     };
   }, [modelPath]);
 
-  return <div ref={mountRef} style={{ width: '100%', height: '100vh' }} />;
+  return <div ref={mountRef} style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%" }} />;
 };
 
 export default ThreeCanvas;
