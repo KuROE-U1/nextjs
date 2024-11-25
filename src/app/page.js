@@ -8,6 +8,7 @@ import './index.css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
+import ThreeCanvas from "./../components/ThreeCanvas";
 
 import { CustomEase } from "gsap/CustomEase";  
 
@@ -181,7 +182,8 @@ export default function Home() {
                         <div className='style1'>
                             <div className="style3">
                                 <div className='style4'>
-                                    <img src="/images/icon.jpg" className='icon'></img>
+                                    {/* <img src="/images/icon.jpg" className='icon'></img> */}
+                                    <ThreeCanvas modelPath="/models/iPhone2.glb" />
                                     {/* <img src="/images/icon_white.png" className='icon'></img> */}
                                     <h4 style={{ marginTop: "10px", color: "#0AF" }}>KuROEu1</h4>
                                     {/* <h4 style={{ marginTop: "10px", color: "#0AF" }}>M.H</h4> */}

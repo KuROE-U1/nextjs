@@ -1,40 +1,71 @@
 "use client";
 
-import ThreeCanvas from "../../components/ThreeCanvas";
+import { useEffect, useRef, useState } from 'react';
+import ThreeCanvas from '../../components/ThreeCanvas';
 
-const ModelPage = () => {
+const ThreePage = () => {
+  const aboutRef = useRef(null);
+  const modelContainerRef = useRef(null);
+  const [isModelVisible, setIsModelVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!aboutRef.current || !modelContainerRef.current) return;
+
+      const aboutTop = aboutRef.current.offsetTop;
+      const aboutHeight = aboutRef.current.offsetHeight;
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const triggerPoint = aboutTop + (aboutHeight * 0.3);
+
+      // モデルを表示する条件
+      if (scrollY + windowHeight > triggerPoint && scrollY < aboutTop + aboutHeight) {
+        setIsModelVisible(true);
+        if (scrollY + windowHeight < aboutTop + aboutHeight) {
+          // aboutセクション内でスクロール中
+          modelContainerRef.current.style.position = 'fixed';
+          modelContainerRef.current.style.top = '50%';
+          modelContainerRef.current.style.transform = 'translateY(-50%)';
+        } else {
+          // aboutセクションの終わりに達した
+          modelContainerRef.current.style.position = 'absolute';
+          modelContainerRef.current.style.top = 'auto';
+          modelContainerRef.current.style.bottom = '0';
+          modelContainerRef.current.style.transform = 'none';
+        }
+      } else {
+        setIsModelVisible(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div style={{ position: "relative" }}>
-      {/* ThreeCanvasでモデルを表示 */}
-      <ThreeCanvas modelPath="/models/test.glb" />
+    <div>
+      <section style={{ height: '100vh', backgroundColor: '#f0f0f0' }}>
+        <h1>Top Section</h1>
+      </section>
 
-      {/* テキスト1をモデルの前面に表示 */}
-      <div
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          fontSize: "2rem",
-          color: "white",
-          zIndex: 10, // モデルよりも前面に表示
-          pointerEvents: "none", // ユーザー操作を無効化（必要に応じて削除可能）
-        }}
-      >
-        テキスト1
-      </div>
+      <section ref={aboutRef} style={{ height: '200vh', backgroundColor: '#e0e0e0', position: 'relative', overflow: 'hidden' }}>
+        <div ref={modelContainerRef} style={{ 
+          position: 'absolute', 
+          width: '100%', 
+          height: '100vh',
+          top: '30%',
+          visibility: isModelVisible ? 'visible' : 'hidden'
+        }}>
+          <ThreeCanvas modelPath="models/iPhone2.glb" />
+        </div>
+        <h1 style={{ position: 'absolute', top: '10px', left: '10px' }}>About Section</h1>
+      </section>
 
-      {/* 他のテキストをスクロールセクションに配置 */}
-      <div style={{ height: "200vh", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-        <div style={{ fontSize: "2rem", margin: "50px 0", textAlign: "center", color: "black" }}>
-          テキスト2
-        </div>
-        <div style={{ fontSize: "2rem", margin: "50px 0", textAlign: "center", color: "black" }}>
-          テキスト3
-        </div>
-      </div>
+      <section style={{ height: '100vh', backgroundColor: '#d0d0d0' }}>
+        <h1>Works Section</h1>
+      </section>
     </div>
   );
 };
 
-export default ModelPage;
+export default ThreePage;
