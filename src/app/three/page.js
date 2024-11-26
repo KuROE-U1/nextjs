@@ -21,16 +21,22 @@ const ThreePage = () => {
       // モデルを表示する条件
       if (scrollY + windowHeight > triggerPoint && scrollY < aboutTop + aboutHeight) {
         setIsModelVisible(true);
-        if (scrollY + windowHeight < aboutTop + aboutHeight) {
+        console.log(scrollY);
+        if (scrollY + windowHeight < aboutTop + aboutHeight && scrollY > aboutTop) {
           // aboutセクション内でスクロール中
           modelContainerRef.current.style.position = 'fixed';
           modelContainerRef.current.style.top = '50%';
           modelContainerRef.current.style.transform = 'translateY(-50%)';
-        } else {
+        } else if (scrollY + windowHeight >= aboutTop + aboutHeight) {
           // aboutセクションの終わりに達した
           modelContainerRef.current.style.position = 'absolute';
           modelContainerRef.current.style.top = 'auto';
           modelContainerRef.current.style.bottom = '0';
+          modelContainerRef.current.style.transform = 'none';
+        } else {
+          // aboutセクションの始まりに達した
+          modelContainerRef.current.style.position = 'absolute';
+          modelContainerRef.current.style.top = '0';
           modelContainerRef.current.style.transform = 'none';
         }
       } else {
@@ -53,8 +59,8 @@ const ThreePage = () => {
           position: 'absolute', 
           width: '100%', 
           height: '100vh',
-          top: '30%',
-          visibility: isModelVisible ? 'visible' : 'hidden'
+          top: '0',
+        //   visibility: isModelVisible ? 'visible' : 'hidden'
         }}>
           <ThreeCanvas modelPath="models/iPhone2.glb" />
         </div>
