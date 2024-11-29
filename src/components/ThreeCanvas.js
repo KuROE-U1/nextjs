@@ -91,28 +91,28 @@ camera.lookAt(new THREE.Vector3(0, 0, 0));  // モデルの中心を見つめる
         //     }
         // );
         gsap.fromTo(modelGroup.position, 
-            { z: -10 }, // 開始位置（遠く）
+            { z: -1 }, // 開始位置（遠く）
             {
               z: 0, // 終了位置（元の位置）
               scrollTrigger: {
                 trigger: mountRef.current,
-                start: "top+=50% center", // 画面の中央にトリガーが来たら開始
-                toggleActions: "play none none none", // 一度だけアニメーションを実行
+                start: "top+=30% center", // 画面の中央にトリガーが来たら開始
+                toggleActions: "play none none reverse", // 一度だけアニメーションを実行
                 markers: true, // マーカーを表示してデバッグ（必要に応じて削除可）
               },
-              duration: 0.5, // アニメーションの持続時間（秒）
+              duration: 1, // アニメーションの持続時間（秒）
               ease: "power2.out", // イージング（滑らかな減速）
             }
           );
           
           gsap.fromTo(modelGroup.scale,
-            { x: 0, y: 0, z: 0 }, // 開始スケール（小さい）
+            { x: 1, y: 1, z: 0 }, // 開始スケール（小さい）
             {
               x: 1, y: 1, z: 1, // 終了スケール（通常サイズ）
               scrollTrigger: {
                 trigger: mountRef.current,
-                start: "top+=50% center", // 画面の中央にトリガーが来たら開始
-                toggleActions: "play none none none", // 一度だけアニメーションを実行
+                start: "top+=30% center", // 画面の中央にトリガーが来たら開始
+                toggleActions: "play none none reverse", // 一度だけアニメーションを実行
               },
               duration: 1, // アニメーションの持続時間（秒）
               ease: "power2.out", // イージング（滑らかな減速）
@@ -120,9 +120,9 @@ camera.lookAt(new THREE.Vector3(0, 0, 0));  // モデルの中心を見つめる
           );
           gsap.fromTo(modelGroup.rotation,
             { 
-              x: Math.PI / 4,  // 45度回転
-              y: Math.PI / 2,  // 90度回転
-              z: Math.PI / 6   // 30度回転
+              x: Math.PI / 2,  // 45度回転
+            //   y: Math.PI / 2,  // 90度回転
+            //   z: Math.PI / 2   // 30度回転
             },
             {
               x: 0,
@@ -130,8 +130,8 @@ camera.lookAt(new THREE.Vector3(0, 0, 0));  // モデルの中心を見つめる
               z: 0,
               scrollTrigger: {
                 trigger: mountRef.current,
-                start: "top+=50% center",
-                toggleActions: "play none none none",
+                start: "top+=30% center",
+                toggleActions: "play none none reverse",
               },
               duration: 1,
               ease: "power2.out",

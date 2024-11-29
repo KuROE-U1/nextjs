@@ -236,7 +236,11 @@ export default function Home() {
                     <div ref={modelContainerRef} style={{ position: 'absolute', width: '100%', height: '100vh', top: '0'}}>
                     <ThreeCanvas modelPath="models/iPhone2.glb" />
                     </div>
-                    <h1 style={{ position: 'absolute', top: '10px', left: '10px' }}>About Section</h1>
+                    {/* <h1 style={{ position: 'absolute', top: '10px', left: '10px' }}>About Section</h1> */}
+                    <div className="about__title">
+                            <h2 style={{ color: "#333" }}>About</h2>
+                            <div>私について</div>
+                        </div>
                 </section>
 
                 <section id="works">
