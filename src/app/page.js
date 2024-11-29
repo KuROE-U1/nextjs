@@ -51,6 +51,43 @@ export default function Home() {
         loadVideo();
     }, []);
 
+    const aboutRef = useRef(null);
+    const modelContainerRef = useRef(null);
+    // const [isModelVisible, setIsModelVisible] = useState(false);
+    useEffect(() => {
+        const handleScroll = () => {
+          if (!aboutRef.current || !modelContainerRef.current) return;
+    
+          const aboutTop = aboutRef.current.offsetTop;
+          const aboutHeight = aboutRef.current.offsetHeight;
+          const scrollY = window.scrollY;
+          const windowHeight = window.innerHeight;
+          const triggerPoint = aboutTop + (aboutHeight * 0.3);
+    
+            console.log(scrollY);
+            if (scrollY + windowHeight < aboutTop + aboutHeight && scrollY > aboutTop) {
+              // aboutセクション内でスクロール中
+                modelContainerRef.current.style.position = 'fixed';
+                modelContainerRef.current.style.top = '50%';
+                modelContainerRef.current.style.transform = 'translateY(-50%)';
+            } else if (scrollY + windowHeight >= aboutTop + aboutHeight) {
+              // aboutセクションの終わりに達した
+                modelContainerRef.current.style.position = 'absolute';
+                modelContainerRef.current.style.top = 'auto';
+                modelContainerRef.current.style.bottom = '0';
+                modelContainerRef.current.style.transform = 'none';
+            } else {
+                // aboutセクションの始まりに達した
+                modelContainerRef.current.style.position = 'absolute';
+                modelContainerRef.current.style.top = '0';
+                modelContainerRef.current.style.transform = 'none';
+            }
+        };
+    
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+      }, []);
+
     // テキストと背景のアニメーション
     useEffect(() => {
         if (textRef.current) {
@@ -173,7 +210,7 @@ export default function Home() {
                     </div>
                 </section>
 
-                <section id="about">
+                {/* <section id="about">
                     <div className="about__wrapper">
                         <div className="about__title">
                             <h2 style={{ color: "#333" }}>About</h2>
@@ -182,11 +219,7 @@ export default function Home() {
                         <div className='style1'>
                             <div className="style3">
                                 <div className='style4'>
-                                    {/* <img src="/images/icon.jpg" className='icon'></img> */}
-                                    <ThreeCanvas modelPath="/models/iPhone2.glb" />
-                                    {/* <img src="/images/icon_white.png" className='icon'></img> */}
                                     <h4 style={{ marginTop: "10px", color: "#0AF" }}>KuROEu1</h4>
-                                    {/* <h4 style={{ marginTop: "10px", color: "#0AF" }}>M.H</h4> */}
                                 </div>
                                 <div className='style5'>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</div>
                             </div>
@@ -197,6 +230,13 @@ export default function Home() {
                             </Link>
                         </div>
                     </div>
+                </section> */}
+                <section ref={aboutRef} style={{ height: '300vh', backgroundColor: '#e0e0e0', position: 'relative', overflow: 'hidden' }}>
+
+                    <div ref={modelContainerRef} style={{ position: 'absolute', width: '100%', height: '100vh', top: '0'}}>
+                    <ThreeCanvas modelPath="models/iPhone2.glb" />
+                    </div>
+                    <h1 style={{ position: 'absolute', top: '10px', left: '10px' }}>About Section</h1>
                 </section>
 
                 <section id="works">
