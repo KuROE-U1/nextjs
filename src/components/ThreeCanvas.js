@@ -65,6 +65,9 @@ camera.lookAt(new THREE.Vector3(0, 0, 0));  // モデルの中心を見つめる
         // モデルをシーンの中心に配置
         model.position.set(-center.x, -center.y, -center.z);
 
+        // グループ全体の位置を右半分の中央に調整
+        modelGroup.position.set(0.5, 0, 0); // x=0.5で右に移動（必要に応じて調整）
+
         // モデルのスケールを調整
         const desiredSize = 1; // モデルの目標サイズ（任意の値に調整可能）
         const maxDimension = Math.max(size.x, size.y, size.z);
@@ -75,73 +78,61 @@ camera.lookAt(new THREE.Vector3(0, 0, 0));  // モデルの中心を見つめる
         // グループにモデルを追加
         modelGroup.add(model);
 
-        // // モデルを遠くから手前に移動させるアニメーション
-        // gsap.fromTo(modelGroup.position, 
-        //     { z: -10 }, // 開始位置（遠く）
-        //     {
-        //     z: 0, // 終了位置（元の位置）
-        //     scrollTrigger: {
-        //         trigger: mountRef.current,
-        //         start: "top+=50% bottom", // 画面の下端にトリガーが来たら開始
-        //         end: "top+=50% center", // 画面の中央にトリガーが来たら終了
-        //         scrub: true, // スクロールに合わせてアニメーションを同期
-        //         markers: true, // マーカーを表示してデバッグ（必要に応じて削除可）
-        //     },
-        //     ease: "power2.out", // イージング（滑らかな減速）
-        //     }
-        // );
-        gsap.fromTo(modelGroup.position, 
-            { z: -1 }, // 開始位置（遠く）
+        gsap.fromTo(modelGroup.position,
+            { x: -2.5 }, // Start
             {
-              z: 0, // 終了位置（元の位置）
-              scrollTrigger: {
-                trigger: mountRef.current,
-                start: "top+=30% center", // 画面の中央にトリガーが来たら開始
-                toggleActions: "play none none reverse", // 一度だけアニメーションを実行
-                markers: true, // マーカーを表示してデバッグ（必要に応じて削除可）
-              },
-              duration: 1, // アニメーションの持続時間（秒）
-              ease: "power2.out", // イージング（滑らかな減速）
+                x: -1, // End
+                scrollTrigger: {
+                    trigger: mountRef.current,
+                    start: "top+=50% center", // アニメーション開始位置
+                    end: "bottom+=50% center", // アニメーション終了位置
+                    scrub: true,
+                    // markers: true,
+                },
+                duration: 1,
+                ease: "power2.out", // イージング（滑らかな減速）
             }
-          );
-          
-          gsap.fromTo(modelGroup.scale,
-            { x: 1, y: 1, z: 0 }, // 開始スケール（小さい）
+        );
+        gsap.fromTo(modelGroup.scale,
+            { x: 1, y: 1, z: 1 }, // Start
             {
-              x: 1, y: 1, z: 1, // 終了スケール（通常サイズ）
-              scrollTrigger: {
-                trigger: mountRef.current,
-                start: "top+=30% center", // 画面の中央にトリガーが来たら開始
-                toggleActions: "play none none reverse", // 一度だけアニメーションを実行
-              },
-              duration: 1, // アニメーションの持続時間（秒）
-              ease: "power2.out", // イージング（滑らかな減速）
+                x: 1, y: 1, z: 1, // End
+                scrollTrigger: {
+                    trigger: mountRef.current,
+                    start: "top+=50% center", // アニメーション開始位置
+                    end: "bottom+=50% center", // アニメーション終了位置
+                    scrub: true,
+                    // markers: true,
+                },
+                duration: 1, // アニメーションの持続時間（秒）
+                ease: "power2.out", // イージング（滑らかな減速）
             }
-          );
-          gsap.fromTo(modelGroup.rotation,
+        );
+        gsap.fromTo(modelGroup.rotation,
             { 
-              x: Math.PI / 2,  // 45度回転
-            //   y: Math.PI / 2,  // 90度回転
-            //   z: Math.PI / 2   // 30度回転
+                // x: Math.PI / 1,
+                // y: Math.PI / 2,
+                // z: Math.PI / 2
             },
             {
-              x: 0,
-              y: 0,
-              z: 0,
-              scrollTrigger: {
-                trigger: mountRef.current,
-                start: "top+=30% center",
-                toggleActions: "play none none reverse",
-              },
-              duration: 1,
-              ease: "power2.out",
+                x: 0, y: 0, z: 0,
+                scrollTrigger: {
+                    trigger: mountRef.current,
+                    start: "top+=50% center", // アニメーション開始位置
+                    end: "bottom+=50% center", // アニメーション終了位置
+                    scrub: true,
+                    // markers: true,
+                },
+                duration: 1, // アニメーションの持続時間（秒）
+                ease: "power2.out", // イージング（滑らかな減速）
             }
-          );
+        );
+
         // モデルの回転をスクロールに合わせてアニメーションさせる
         gsap.to(model.rotation, {
         scrollTrigger: {
             trigger: mountRef.current,
-            start: "top+=150% bottom", // 3Dモデルが表示される開始位置（Aboutセクションが表示される位置）
+            start: "bottom+=50% center", // 3Dモデルが表示される開始位置（Aboutセクションが表示される位置）
             end: "bottom+=150% top", // 終了位置（Aboutセクションがスクロールされていなくなる位置）
             scrub: true, // スクロールに合わせてアニメーションを同期
             markers: true, // マーカーを表示してデバッグ

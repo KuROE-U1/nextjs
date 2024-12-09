@@ -115,43 +115,8 @@ export default function Home() {
                     // markers: true,
                 }
             });
-
-            // // `.about`のクリップパスアニメーション
-            // gsap.to("#about", {
-            //     clipPath: "polygon(0% 0px, 100% 0vh, 100% 100%, 0px 100%)",
-            //     scrollTrigger: {
-            //         trigger: ".first-view",  // トリガーを`.about`に設定
-            //         start: "top top", // ページ下部からスクロール開始
-            //         end: "bottom center",
-            //         scrub: true,
-            //         // markers: true,
-            //     }
-            // });
-
         }
     }, []);
-
-    // // `.about-title`の文字アニメーション
-    // useEffect(() => {
-    //     const tl = gsap.timeline({
-    //         // delay: 0.6,                                 // 表示遅延
-    //         scrollTrigger: {
-    //             trigger: "#top",
-    //             start: "top+=15% top",
-    //             end: "center top",
-    //             toggleActions: "none play none reset",
-    //             markers: true,
-    //         }
-    //     });
-    
-    //     tl.to(".about-title span", {
-    //         opacity: 1,
-    //         y: 0,
-    //         duration: 0.8,                              // 全文字表示が終わるまで 0.8s
-    //         ease: "custom",                             // カスタムイージング 上部に記載
-    //         stagger: 0.05,                              // 各文字に遅延 0.05s
-    //     });
-    // }, []);
 
     // ページ遷移エフェクト
     const handleLinkClick = (e, href) => {
@@ -196,9 +161,6 @@ export default function Home() {
                             Your browser does not support the video tag.
                         </video>
                         <div className="text-animation logo">
-                            {/* <span className="char">M</span>
-                            <span className="char">.</span>
-                            <span className="char">H</span> */}
                             <span className="char">K</span>
                             <span className="char">u</span>
                             <span className="char">R</span>
@@ -209,38 +171,16 @@ export default function Home() {
                         </div>
                     </div>
                 </section>
-
-                {/* <section id="about">
-                    <div className="about__wrapper">
-                        <div className="about__title">
-                            <h2 style={{ color: "#333" }}>About</h2>
-                            <div>私について</div>
-                        </div>
-                        <div className='style1'>
-                            <div className="style3">
-                                <div className='style4'>
-                                    <h4 style={{ marginTop: "10px", color: "#0AF" }}>KuROEu1</h4>
-                                </div>
-                                <div className='style5'>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</div>
-                            </div>
-                        </div>
-                        <div style={{ textAlign: "center", margin: "20px 0" }}>
-                            <Link href="/about" onClick={(e) => handleLinkClick(e, '/about')}>
-                                <button className="btn1">VIEW MORE</button>
-                            </Link>
-                        </div>
-                    </div>
-                </section> */}
                 <section ref={aboutRef} style={{ height: '300vh', backgroundColor: '#e0e0e0', position: 'relative', overflow: 'hidden' }}>
 
                     <div ref={modelContainerRef} style={{ position: 'absolute', width: '100%', height: '100vh', top: '0'}}>
-                    <ThreeCanvas modelPath="models/iPhone2.glb" />
+                    <ThreeCanvas modelPath="models/test.glb" />
                     </div>
                     {/* <h1 style={{ position: 'absolute', top: '10px', left: '10px' }}>About Section</h1> */}
-                    <div className="about__title">
+                    {/* <div className="about__title">
                             <h2 style={{ color: "#333" }}>About</h2>
                             <div>私について</div>
-                        </div>
+                        </div> */}
                 </section>
 
                 <section id="works">
