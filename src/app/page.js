@@ -16,6 +16,7 @@ gsap.registerPlugin(ScrollTrigger, CustomEase);
 CustomEase.create("custom", "0, 0.7, 0.3, 1");
 
 export default function Home() {
+    const helloRef = useRef(null);
     const videoRef = useRef(null);
     const router = useRouter();
     const pathname = usePathname();
@@ -54,39 +55,51 @@ export default function Home() {
     const aboutRef = useRef(null);
     const modelContainerRef = useRef(null);
     // const [isModelVisible, setIsModelVisible] = useState(false);
-    useEffect(() => {
-        const handleScroll = () => {
-          if (!aboutRef.current || !modelContainerRef.current) return;
+        // スクロールに応じた`hello`と`modelContainer`の制御
+        useEffect(() => {
+            const handleScroll = () => {
+                if (!aboutRef.current || !modelContainerRef.current || !helloRef.current) return;
     
-          const aboutTop = aboutRef.current.offsetTop;
-          const aboutHeight = aboutRef.current.offsetHeight;
-          const scrollY = window.scrollY;
-          const windowHeight = window.innerHeight;
-          const triggerPoint = aboutTop + (aboutHeight * 0.3);
+                const aboutTop = aboutRef.current.offsetTop;
+                const aboutHeight = aboutRef.current.offsetHeight;
+                const scrollY = window.scrollY;
+                const windowHeight = window.innerHeight;
     
-            console.log(scrollY);
-            if (scrollY + windowHeight < aboutTop + aboutHeight && scrollY > aboutTop) {
-              // aboutセクション内でスクロール中
-                modelContainerRef.current.style.position = 'fixed';
-                modelContainerRef.current.style.top = '50%';
-                modelContainerRef.current.style.transform = 'translateY(-50%)';
-            } else if (scrollY + windowHeight >= aboutTop + aboutHeight) {
-              // aboutセクションの終わりに達した
-                modelContainerRef.current.style.position = 'absolute';
-                modelContainerRef.current.style.top = 'auto';
-                modelContainerRef.current.style.bottom = '0';
-                modelContainerRef.current.style.transform = 'none';
-            } else {
-                // aboutセクションの始まりに達した
-                modelContainerRef.current.style.position = 'absolute';
-                modelContainerRef.current.style.top = '0';
-                modelContainerRef.current.style.transform = 'none';
-            }
-        };
+                // `hello`の位置を制御
+                if (scrollY >= aboutTop) {
+                    helloRef.current.style.position = 'fixed';
+                    helloRef.current.style.top = '50%';
+                    helloRef.current.style.left = '50%';
+                    helloRef.current.style.transform = 'translate(-50%, -50%)';
+                } else {
+                    helloRef.current.style.position = 'relative';
+                    helloRef.current.style.left = '0';
+                    helloRef.current.style.top = `50vh`;
+                    helloRef.current.style.transform = 'translateY(-50%)';
+                }
     
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-      }, []);
+                // `modelContainer`の位置を制御
+                const triggerPoint = aboutTop + (aboutHeight * 0.3);
+                if (scrollY + windowHeight < aboutTop + aboutHeight && scrollY > aboutTop) {
+                    modelContainerRef.current.style.position = 'fixed';
+                    modelContainerRef.current.style.top = '50%';
+                    modelContainerRef.current.style.transform = 'translateY(-50%)';
+                } else if (scrollY + windowHeight >= aboutTop + aboutHeight) {
+                    modelContainerRef.current.style.position = 'absolute';
+                    modelContainerRef.current.style.top = 'auto';
+                    modelContainerRef.current.style.bottom = '0';
+                    modelContainerRef.current.style.transform = 'none';
+                } else {
+                    modelContainerRef.current.style.position = 'absolute';
+                    modelContainerRef.current.style.top = '0';
+                    modelContainerRef.current.style.transform = 'none';
+                }
+            };
+    
+            window.addEventListener('scroll', handleScroll);
+            return () => window.removeEventListener('scroll', handleScroll);
+        }, []);
+    
 
     // テキストと背景のアニメーション
     useEffect(() => {
@@ -113,6 +126,19 @@ export default function Home() {
                     end: "bottom center",
                     scrub: true,
                     // markers: true,
+                }
+            });
+            // `.hello`の縮小アニメーション
+            gsap.to(helloRef.current, {
+                filter: 'blur(10px)',
+                opacity: 0,
+                fontSize:'50px',
+                scrollTrigger: {
+                    trigger: "#about", // #aboutセクションをトリガーに設定
+                    start: "top top", // #aboutのトップが画面のトップに来たとき
+                    end: "top+=25% top", // #aboutの下端が画面のトップから100vh下になったとき
+                    scrub: true, // スクロールに合わせてアニメーションを調整
+                    // markers: true, // 開発時に確認用のマーカーを表示（必要に応じて削除）
                 }
             });
         }
@@ -171,17 +197,23 @@ export default function Home() {
                         </div>
                     </div>
                 </section>
-                <section ref={aboutRef} style={{ height: '300vh', backgroundColor: '#e0e0e0', position: 'relative', overflow: 'hidden' }}>
-
-                    <div ref={modelContainerRef} style={{ position: 'absolute', width: '100%', height: '100vh', top: '0'}}>
-                    <ThreeCanvas modelPath="models/test.glb" />
+                <section id="about" ref={aboutRef} style={{ height: '400vh', backgroundColor: '#e0e0e0', position: 'relative', overflow: 'hidden' }}>
+                    <div ref={modelContainerRef} style={{ position: 'absolute', width: '100%', height: '100vh', top: '0' }}>
+                        <ThreeCanvas modelPath="models/test.glb" />
                     </div>
-                    {/* <h1 style={{ position: 'absolute', top: '10px', left: '10px' }}>About Section</h1> */}
-                    {/* <div className="about__title">
-                            <h2 style={{ color: "#333" }}>About</h2>
-                            <div>私について</div>
-                        </div> */}
+                    <div ref={helloRef} className="hello" style={{
+                        transform: 'translate(-50%, -50%)',
+                        zIndex: 10,
+                        textAlign: 'center',
+                        filter: 'blur(0px)',
+                        opacity: 1,
+                        fontSize:'100px',
+                    }}>
+                        Hello
+                    </div>
                 </section>
+
+
 
                 <section id="works">
                     <div className="works__wrapper">
