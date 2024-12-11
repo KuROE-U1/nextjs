@@ -6,158 +6,136 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// ScrollTriggerを登録
 gsap.registerPlugin(ScrollTrigger);
 
 const ThreeCanvas = ({ modelPath }) => {
   const mountRef = useRef(null);
 
   useEffect(() => {
-    // シーンの作成
     const scene = new THREE.Scene();
 
-    // カメラの作成
     const camera = new THREE.PerspectiveCamera(
-        45, // 視野角
-        window.innerWidth / window.innerHeight,
-        0.1,
-        1000
+      45,
+      (window.innerWidth * 0.5) / window.innerHeight,
+      0.1,
+      1000
     );
-    
-    // カメラの位置を調整
-    camera.position.set(0, 0, 2); // 必要に応じて調整（z軸を遠くしてモデル全体を捉える）
-    camera.lookAt(0, 0, 0); // モデルの中心を向くように設定
-    
-    // 環境光
-    const ambientLight = new THREE.AmbientLight(0xFFFFFF, 2);
+
+    camera.position.set(0, 0, 2);
+    camera.lookAt(0, 0, 0);
+
+    const ambientLight = new THREE.AmbientLight(0xffffff, 2);
     scene.add(ambientLight);
 
-    // レンダラー
     const renderer = new THREE.WebGLRenderer({
       alpha: true,
       antialias: true,
     });
     renderer.setClearColor(0x000000, 0);
     renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(window.innerWidth * 0.5, window.innerHeight);
 
-    // マウントされたDOM要素にレンダラーを追加
     if (mountRef.current) {
       mountRef.current.appendChild(renderer.domElement);
     }
 
-    // グループを作成して、モデルを中心に配置
     const modelGroup = new THREE.Group();
     scene.add(modelGroup);
 
-    // GLTFファイルの読み込み
     const loader = new GLTFLoader();
-    loader.load(
-      modelPath,
-      (gltf) => {
-        const model = gltf.scene;
+loader.load(
+  modelPath,
+  (gltf) => {
+    const model = gltf.scene;
 
-        // モデルのバウンディングボックスを計算
-        const box = new THREE.Box3().setFromObject(model);
-        const center = box.getCenter(new THREE.Vector3());
-        const size = box.getSize(new THREE.Vector3());
+    const box = new THREE.Box3().setFromObject(model);
+    const center = box.getCenter(new THREE.Vector3());
+    const size = box.getSize(new THREE.Vector3());
 
-        // モデルをシーンの中心に配置
-        model.position.set(-center.x, -center.y, -center.z);
+    // モデルを原点に移動
+    model.position.set(-center.x, -center.y, -center.z);
 
-        // グループ全体の位置を右半分の中央に調整
-        modelGroup.position.set(0.5, 0, 0); // x=0.5で右に移動（必要に応じて調整）
+    const desiredSize = 1;
+    const maxDimension = Math.max(size.x, size.y, size.z);
+    const scale = desiredSize / maxDimension;
+    model.scale.set(scale, scale, scale);
 
-        // モデルのスケールを調整
-        const desiredSize = 1; // モデルの目標サイズ（任意の値に調整可能）
-        const maxDimension = Math.max(size.x, size.y, size.z);
-        const scale = desiredSize / maxDimension;
+    modelGroup.add(model);
+    modelGroup.position.set(-0.25, 0, 0);
 
-        model.scale.set(scale, scale, scale); // X, Y, Z軸全てにスケールを適用
-
-        // グループにモデルを追加
-        modelGroup.add(model);
-
-        gsap.fromTo(modelGroup.position,
-            { x: -2.5 }, // Start
-            {
-                x: -1, // End
-                scrollTrigger: {
-                    trigger: mountRef.current,
-                    start: "top+=50% center", // アニメーション開始位置
-                    end: "bottom+=50% center", // アニメーション終了位置
-                    scrub: true,
-                    // markers: true,
-                },
-                duration: 1,
-                ease: "power2.out", // イージング（滑らかな減速）
-            }
-        );
-        gsap.fromTo(modelGroup.scale,
-            { x: 1, y: 1, z: 1 }, // Start
-            {
-                x: 1, y: 1, z: 1, // End
-                scrollTrigger: {
-                    trigger: mountRef.current,
-                    start: "top+=50% center", // アニメーション開始位置
-                    end: "bottom+=50% center", // アニメーション終了位置
-                    scrub: true,
-                    // markers: true,
-                },
-                duration: 1, // アニメーションの持続時間（秒）
-                ease: "power2.out", // イージング（滑らかな減速）
-            }
-        );
-        gsap.fromTo(modelGroup.rotation,
-            { 
-                // x: Math.PI / 1,
-                // y: Math.PI / 2,
-                // z: Math.PI / 2
-            },
-            {
-                x: 0, y: 0, z: 0,
-                scrollTrigger: {
-                    trigger: mountRef.current,
-                    start: "top+=50% center", // アニメーション開始位置
-                    end: "bottom+=50% center", // アニメーション終了位置
-                    scrub: true,
-                    // markers: true,
-                },
-                duration: 1, // アニメーションの持続時間（秒）
-                ease: "power2.out", // イージング（滑らかな減速）
-            }
-        );
-
-        // モデルの回転をスクロールに合わせてアニメーションさせる
-        gsap.to(model.rotation, {
-        scrollTrigger: {
-            trigger: mountRef.current,
-            start: "bottom+=50% center", // 3Dモデルが表示される開始位置（Aboutセクションが表示される位置）
-            end: "bottom+=150% top", // 終了位置（Aboutセクションがスクロールされていなくなる位置）
-            scrub: true, // スクロールに合わせてアニメーションを同期
-            // markers: true, // マーカーを表示してデバッグ
-        },
-          x: Math.PI * -0.1, // X軸の回転
-          y: Math.PI * -0.1, // y軸の回転
-          z: Math.PI * -0.1, // z軸の回転
-        });
-    },
-    undefined,
-    (error) => {
-        console.error("モデルの読み込みに失敗しました", error);
+// 出現アニメーション
+gsap.fromTo(
+    modelGroup.position,
+    { x: -2 },
+    {
+      x: -0.25,
+      scrollTrigger: {
+        trigger: mountRef.current,
+        start: "top+=70% center",
+        end: "bottom+=50% center",
+        scrub: true,
+        markers: true,
+      },
+      ease: "none",
     }
-    );
+  );
 
-    // アニメーションループ
+  // 初期回転アニメーション
+  gsap.fromTo(
+    model.rotation,
+    {
+      x: -Math.PI / 9,
+      y: -Math.PI / 6,
+      z: -Math.PI / 9,
+    },
+    {
+      x: -Math.PI / 18,
+      y: -Math.PI / 9,
+      z: -Math.PI / 18,
+      scrollTrigger: {
+        trigger: mountRef.current,
+        start: "top+=70% center",
+        end: "bottom+=50% center",
+        scrub: true,
+      },
+      ease: "none",
+    }
+  );
+
+  // 連続回転アニメーション
+  gsap.fromTo(model.rotation, {
+    x: -Math.PI / 18,
+    y: -Math.PI / 9,
+    z: -Math.PI / 18,
+}, {
+    x: -Math.PI / 18,
+    y: Math.PI * 2,
+    z: -Math.PI / 18,
+    scrollTrigger: {
+        trigger: mountRef.current,
+        start: "bottom+=90% center",
+        end: "bottom+=290% center",
+        scrub: 1,
+        markers: true,
+    },
+    ease: "none",
+});
+
+},
+undefined,
+(error) => {
+  console.error("モデルの読み込みに失敗しました", error);
+}
+);
+
     function tick() {
       requestAnimationFrame(tick);
       renderer.render(scene, camera);
     }
     tick();
 
-    // ウィンドウのリサイズ対応
     const handleResize = () => {
-      const width = window.innerWidth;
+      const width = window.innerWidth * 0.5;
       const height = window.innerHeight;
 
       camera.aspect = width / height;
@@ -168,7 +146,6 @@ const ThreeCanvas = ({ modelPath }) => {
 
     window.addEventListener("resize", handleResize);
 
-    // クリーンアップ
     return () => {
       window.removeEventListener("resize", handleResize);
       if (mountRef.current && renderer.domElement) {
@@ -177,7 +154,18 @@ const ThreeCanvas = ({ modelPath }) => {
     };
   }, [modelPath]);
 
-  return <div ref={mountRef} style={{ position: "absolute", width: "100%", height: "100%" }} />;
+  return (
+    <div
+      ref={mountRef}
+      style={{
+        position: "absolute",
+        width: "50%",
+        height: "100%",
+        left: "0", // 左側50%
+        top: "0",
+      }}
+    />
+  );
 };
 
 export default ThreeCanvas;

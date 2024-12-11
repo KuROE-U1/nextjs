@@ -135,10 +135,10 @@ export default function Home() {
                 fontSize:'50px',
                 scrollTrigger: {
                     trigger: "#about", // #aboutセクションをトリガーに設定
-                    start: "top top", // #aboutのトップが画面のトップに来たとき
+                    start: "top+=100px top", // #aboutのトップが画面のトップに来たとき
                     end: "top+=25% top", // #aboutの下端が画面のトップから100vh下になったとき
                     scrub: true, // スクロールに合わせてアニメーションを調整
-                    // markers: true, // 開発時に確認用のマーカーを表示（必要に応じて削除）
+                    markers: true, // 開発時に確認用のマーカーを表示（必要に応じて削除）
                 }
             });
         }
@@ -199,7 +199,7 @@ export default function Home() {
                 </section>
                 <section id="about" ref={aboutRef} style={{ height: '400vh', backgroundColor: '#e0e0e0', position: 'relative', overflow: 'hidden' }}>
                     <div ref={modelContainerRef} style={{ position: 'absolute', width: '100%', height: '100vh', top: '0' }}>
-                        <ThreeCanvas modelPath="models/test.glb" />
+                        <ThreeCanvas modelPath="models/iPhone2.glb" />
                     </div>
                     <div ref={helloRef} className="hello" style={{
                         transform: 'translate(-50%, -50%)',
