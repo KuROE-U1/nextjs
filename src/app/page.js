@@ -225,7 +225,6 @@ export default function Home() {
     boxSizing: 'border-box',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
     backgroundColor: 'white'
   }}>
     <h2 style={{ marginBottom: '20px', fontSize: '2.5em' }}>About Us</h2>
