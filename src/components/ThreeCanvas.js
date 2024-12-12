@@ -74,7 +74,7 @@ gsap.fromTo(
         start: "top+=70% center",
         end: "bottom+=50% center",
         scrub: true,
-        markers: true,
+        // markers: true,
       },
       ease: "none",
     }
@@ -115,8 +115,8 @@ gsap.fromTo(
         trigger: mountRef.current,
         start: "bottom+=90% center",
         end: "bottom+=290% center",
-        scrub: 1,
-        markers: true,
+        scrub: true,
+        // markers: true,
     },
     ease: "none",
 });

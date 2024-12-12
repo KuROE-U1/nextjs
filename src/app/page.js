@@ -17,6 +17,7 @@ CustomEase.create("custom", "0, 0.7, 0.3, 1");
 
 export default function Home() {
     const helloRef = useRef(null);
+    const testRef = useRef(null);
     const videoRef = useRef(null);
     const router = useRouter();
     const pathname = usePathname();
@@ -138,7 +139,7 @@ export default function Home() {
                     start: "top+=100px top", // #aboutのトップが画面のトップに来たとき
                     end: "top+=25% top", // #aboutの下端が画面のトップから100vh下になったとき
                     scrub: true, // スクロールに合わせてアニメーションを調整
-                    markers: true, // 開発時に確認用のマーカーを表示（必要に応じて削除）
+                    // markers: true, // 開発時に確認用のマーカーを表示（必要に応じて削除）
                 }
             });
         }
@@ -198,20 +199,45 @@ export default function Home() {
                     </div>
                 </section>
                 <section id="about" ref={aboutRef} style={{ height: '400vh', backgroundColor: '#e0e0e0', position: 'relative', overflow: 'hidden' }}>
-                    <div ref={modelContainerRef} style={{ position: 'absolute', width: '100%', height: '100vh', top: '0' }}>
-                        <ThreeCanvas modelPath="models/iPhone2.glb" />
-                    </div>
-                    <div ref={helloRef} className="hello" style={{
-                        transform: 'translate(-50%, -50%)',
-                        zIndex: 10,
-                        textAlign: 'center',
-                        filter: 'blur(0px)',
-                        opacity: 1,
-                        fontSize:'100px',
-                    }}>
-                        Hello
-                    </div>
-                </section>
+  <div ref={modelContainerRef} style={{ position: 'absolute', width: '50%', height: '100vh', top: '0', left: '0' }}>
+    <ThreeCanvas modelPath="models/iPhone2.glb" />
+  </div>
+  <div ref={helloRef} className="hello" style={{ 
+    position: 'absolute',
+    left: '25%',
+    top: '50vh',
+    transform: 'translate(-50%, -50%)',
+    zIndex: 10,
+    textAlign: 'center',
+    filter: 'blur(0px)',
+    opacity: 1,
+    fontSize:'100px',
+  }}>
+    Hello
+  </div>
+  <div className="about-content" ref={testRef} style={{
+    position: 'absolute',
+    right: '0',
+    top: '0',
+    width: '50%',
+    height: '100%',
+    padding: '5%',
+    boxSizing: 'border-box',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    backgroundColor: 'white'
+  }}>
+    <h2 style={{ marginBottom: '20px', fontSize: '2.5em' }}>About Us</h2>
+    <p style={{ marginBottom: '15px', fontSize: '1.1em', lineHeight: '1.6' }}>
+      We are a creative team dedicated to bringing innovative ideas to life. Our passion for technology and design drives us to create unique digital experiences.
+    </p>
+    <p style={{ fontSize: '1.1em', lineHeight: '1.6' }}>
+      With expertise in 3D modeling, web development, and user experience design, we strive to push the boundaries of what's possible in the digital realm.
+    </p>
+  </div>
+</section>
+
 
 
 
