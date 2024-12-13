@@ -241,8 +241,7 @@ export default function Home() {
                     textAlign: "center",
                     filter: "blur(0px)",
                     opacity: 1,
-                    fontSize:"50px",
-                    zIndex:"11"
+                    fontSize:"50px"
                 }}>
                     <p>HELLO! WELCOME TO MY PORTFOLIO.</p>
                     <p>HERE I SHOWCASE MY WORKS</p>
@@ -250,7 +249,7 @@ export default function Home() {
                     <p>SO PLEASE ENJOY EXPLORING THEM!</p>
                 </div>
                     <div className="about-content" ref={testRef} style={{ position: "absolute", right: "-50%", top: "0", width: "50%", height: "100%",
-                            padding: "5%", boxSizing: "border-box", display: "flex", flexDirection: "column", backgroundColor: "white" }}>
+                            padding: "5%", boxSizing: "border-box", display: "flex", flexDirection: "column", backgroundColor: "white", zIndex:"11" }}>
                         <h2 style={{ marginBottom: "20px", fontSize: "2.5em" }}>About Us</h2>
                         <p style={{ marginBottom: "15px", fontSize: "1.1em", lineHeight: "1.6" }}>
                             We are a creative team dedicated to bringing innovative ideas to life. Our passion for technology and design drives us to create unique digital experiences.
