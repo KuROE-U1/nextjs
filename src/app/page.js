@@ -246,7 +246,7 @@ export default function Home() {
                 }}>
                     <p>HELLO! WELCOME TO MY PORTFOLIO.</p>
                     <p>HERE I SHOWCASE MY WORKS</p>
-                    <p>AND PROJECTS I'VE BEEN INVOLVED WITH,</p>
+                    <p>AND PROJECTS I&apos;VE BEEN INVOLVED WITH,</p>
                     <p>SO PLEASE ENJOY EXPLORING THEM!</p>
                 </div>
                     <div className="about-content" ref={testRef} style={{ position: "absolute", right: "-50%", top: "0", width: "50%", height: "100%",
