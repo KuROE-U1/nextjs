@@ -232,7 +232,7 @@ export default function Home() {
       We are a creative team dedicated to bringing innovative ideas to life. Our passion for technology and design drives us to create unique digital experiences.
     </p>
     <p style={{ fontSize: "1.1em", lineHeight: "1.6" }}>
-      With expertise in 3D modeling, web development, and user experience design, we strive to push the boundaries of what"s possible in the digital realm.
+      With expertise in 3D modeling, web development, and user experience design, we strive to push the boundaries of what s possible in the digital realm.
     </p>
   </div>
 </section>
