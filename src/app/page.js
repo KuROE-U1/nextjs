@@ -227,13 +227,13 @@ export default function Home() {
     flexDirection: "column",
     backgroundColor: "white"
   }}>
-    <h2 style={{ marginBottom: "20px", fontSize: "2.5em" }}>About Us</h2>
+    {/* <h2 style={{ marginBottom: "20px", fontSize: "2.5em" }}>About Us</h2>
     <p style={{ marginBottom: "15px", fontSize: "1.1em", lineHeight: "1.6" }}>
       We are a creative team dedicated to bringing innovative ideas to life. Our passion for technology and design drives us to create unique digital experiences.
     </p>
     <p style={{ fontSize: "1.1em", lineHeight: "1.6" }}>
       With expertise in 3D modeling, web development, and user experience design, we strive to push the boundaries of what"s possible in the digital realm.
-    </p>
+    </p> */}
   </div>
 </section>
 
