@@ -242,6 +242,7 @@ export default function Home() {
                     filter: "blur(0px)",
                     opacity: 1,
                     fontSize:"50px",
+                    zIndex:"11"
                 }}>
                     <p>HELLO! WELCOME TO MY PORTFOLIO.</p>
                     <p>HERE I SHOWCASE MY WORKS</p>
