@@ -164,7 +164,7 @@ export default function Home() {
                 right: "0%",
                 scrollTrigger: {
                 trigger: modelContainerRef.current,
-                start: "top+=90% center",
+                start: "top+=70% center",
                 end: "bottom+=50% center",
                 scrub: true
                 }
