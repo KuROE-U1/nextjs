@@ -71,7 +71,7 @@ gsap.fromTo(
       x: -0.25,
       scrollTrigger: {
         trigger: mountRef.current,
-        start: "top+=70% center",
+        start: "top+=50% center",
         end: "bottom+=50% center",
         scrub: true,
         // markers: true,
