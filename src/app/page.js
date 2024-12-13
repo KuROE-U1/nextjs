@@ -59,14 +59,14 @@ export default function Home() {
         // スクロールに応じた`hello`と`modelContainer`の制御
         useEffect(() => {
             const handleScroll = () => {
-                if (!aboutRef.current || !modelContainerRef.current || !helloRef.current) return;
-    
+                if (!aboutRef.current || !modelContainerRef.current || !helloRef.current || !testRef.current) return;
+        
                 const aboutTop = aboutRef.current.offsetTop;
                 const aboutHeight = aboutRef.current.offsetHeight;
                 const scrollY = window.scrollY;
                 const windowHeight = window.innerHeight;
-    
-                // `hello`の位置を制御
+        
+                // `hello`の位置を制御（変更なし）
                 if (scrollY >= aboutTop) {
                     helloRef.current.style.position = "fixed";
                     helloRef.current.style.top = "50%";
@@ -78,31 +78,48 @@ export default function Home() {
                     helloRef.current.style.top = `50vh`;
                     helloRef.current.style.transform = "translateY(-50%)";
                 }
-    
-                // `modelContainer`の位置を制御
+        
+                // `modelContainer`の位置を制御（変更なし）
                 const triggerPoint = aboutTop + (aboutHeight * 0.3);
                 if (scrollY + windowHeight < aboutTop + aboutHeight && scrollY > aboutTop) {
                     modelContainerRef.current.style.position = "fixed";
                     modelContainerRef.current.style.top = "50%";
                     modelContainerRef.current.style.transform = "translateY(-50%)";
-                    testRef.current.style.position = "fixed";
                 } else if (scrollY + windowHeight >= aboutTop + aboutHeight) {
                     modelContainerRef.current.style.position = "absolute";
                     modelContainerRef.current.style.top = "auto";
                     modelContainerRef.current.style.bottom = "0";
                     modelContainerRef.current.style.transform = "none";
-                    testRef.current.style.position = "absolute";
                 } else {
                     modelContainerRef.current.style.position = "absolute";
                     modelContainerRef.current.style.top = "0";
                     modelContainerRef.current.style.transform = "none";
+                }
+        
+                // `test`（右側）の位置を制御
+                if (scrollY > aboutTop && scrollY < triggerPoint) {
+                    // fixedの期間：aboutセクションの一番上から出現アニメーション終了まで
+                    testRef.current.style.position = "fixed";
+                    testRef.current.style.top = "0";
+                } else if (scrollY >= triggerPoint && scrollY + windowHeight < aboutTop + aboutHeight) {
+                    // absoluteの期間：アニメーション終了からaboutセクションの一番下がウィンドウの一番下に来るまで
                     testRef.current.style.position = "absolute";
+                    testRef.current.style.top = `${triggerPoint - aboutTop}px`;
+                } else if (scrollY + windowHeight >= aboutTop + aboutHeight) {
+                    // aboutセクションの一番下以降
+                    testRef.current.style.position = "absolute";
+                    testRef.current.style.bottom = "0";
+                } else {
+                    // aboutセクションの上
+                    testRef.current.style.position = "absolute";
+                    testRef.current.style.top = "0";
                 }
             };
-    
+        
             window.addEventListener("scroll", handleScroll);
             return () => window.removeEventListener("scroll", handleScroll);
         }, []);
+        
     
 
     // テキストと背景のアニメーション
@@ -134,7 +151,7 @@ export default function Home() {
             gsap.to(helloRef.current, {
                 filter: "blur(10px)",       // blur(0px) → blur(10px)
                 opacity: 0,                 // 1 → 0
-                fontSize: "50px",           // 100px → 50px
+                fontSize: "30px",           // 100px → 50px
                 scrollTrigger: {
                     trigger: "#about", 
                     start: "top+=100px top",
@@ -212,48 +229,40 @@ export default function Home() {
                     </div>
                 </section>
                 <section id="about" ref={aboutRef} style={{ height: "400vh", backgroundColor: "#e0e0e0", position: "relative", overflow: "hidden" }}>
-  <div ref={modelContainerRef} style={{ position: "absolute", width: "50%", height: "100vh", top: "0", left: "0" }}>
-    <ThreeCanvas modelPath="models/iPhone2.glb" />
-  </div>
-  <div ref={helloRef} className="hello" style={{ 
-    position: "absolute",
-    // left: "25%",
-    right: "-50%",
-    top: "50vh",
-    transform: "translate(-50%, -50%)",
-    zIndex: 10,
-    textAlign: "center",
-    filter: "blur(0px)",
-    opacity: 1,
-    fontSize:"100px",
-  }}>
-    Hello
-  </div>
-  <div
-      className="about-content"
-      ref={testRef}
-      style={{
-        position: "absolute",
-        right: "-50%",
-        top: "0",
-        width: "50%",
-        height: "100%",
-        padding: "5%",
-        boxSizing: "border-box",
-        display: "flex",
-        flexDirection: "column",
-        backgroundColor: "white"
-      }}
-    >
-      <h2 style={{ marginBottom: "20px", fontSize: "2.5em" }}>About Us</h2>
-      <p style={{ marginBottom: "15px", fontSize: "1.1em", lineHeight: "1.6" }}>
-        We are a creative team dedicated to bringing innovative ideas to life. Our passion for technology and design drives us to create unique digital experiences.
-      </p>
-      <p style={{ fontSize: "1.1em", lineHeight: "1.6" }}>
-        With expertise in 3D modeling, web development, and user experience design, we strive to push the boundaries of what’s possible in the digital realm.
-      </p>
-    </div>
-</section>
+                <div ref={modelContainerRef} style={{ position: "absolute", width: "50%", height: "100vh", top: "0", left: "0" }}>
+                    <ThreeCanvas modelPath="models/iPhone2.glb" />
+                </div>
+                <div ref={helloRef} className="hello" style={{ 
+                    position: "absolute",
+                    right: "-50%",
+                    // top: "50vh",
+                    transform: "translate(-50%, -50%)",
+                    zIndex: 10,
+                    textAlign: "center",
+                    filter: "blur(0px)",
+                    opacity: 1,
+                    fontSize:"50px",
+                }}>
+                    <p>HELLO! WELCOME TO MY PORTFOLIO.</p>
+                    <p>HERE I SHOWCASE MY WORKS</p>
+                    <p>AND PROJECTS I'VE BEEN INVOLVED WITH,</p>
+                    <p>SO PLEASE ENJOY EXPLORING THEM!</p>
+                </div>
+                    <div className="about-content" ref={testRef} style={{ position: "absolute", right: "-50%", top: "0", width: "50%", height: "100%",
+                            padding: "5%", boxSizing: "border-box", display: "flex", flexDirection: "column", backgroundColor: "white" }}>
+                        <h2 style={{ marginBottom: "20px", fontSize: "2.5em" }}>About Us</h2>
+                        <p style={{ marginBottom: "15px", fontSize: "1.1em", lineHeight: "1.6" }}>
+                            We are a creative team dedicated to bringing innovative ideas to life. Our passion for technology and design drives us to create unique digital experiences.
+                        </p>
+                        <p style={{ fontSize: "1.1em", lineHeight: "1.6" }}>
+                            With expertise in 3D modeling, web development, and user experience design, we strive to push the boundaries of what’s possible in the digital realm.
+                        </p>
+                        <p style={{ fontSize: "3em", lineHeight: "1.6" }}>
+                            With expertise in 3D modeling, web development, and user experience design, we strive to push the boundaries of what’s possible in the digital realm.
+                        </p>
+
+                    </div>
+                </section>
 
 
 
