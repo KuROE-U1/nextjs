@@ -151,7 +151,7 @@ export default function Home() {
             gsap.to(helloRef.current, {
                 filter: "blur(10px)",       // blur(0px) → blur(10px)
                 opacity: 0,                 // 1 → 0
-                fontSize: "30px",           // 100px → 50px
+                zoom:"0.5",
                 scrollTrigger: {
                     trigger: "#about", 
                     start: "top+=100px top",
@@ -232,25 +232,14 @@ export default function Home() {
                 <div ref={modelContainerRef} style={{ position: "absolute", width: "50%", height: "100vh", top: "0", left: "0" }}>
                     <ThreeCanvas modelPath="models/iPhone2.glb" />
                 </div>
-                <div ref={helloRef} className="hello" style={{ 
-                    position: "absolute",
-                    right: "-50%",
-                    // top: "50vh",
-                    transform: "translate(-50%, -50%)",
-                    zIndex: 10,
-                    textAlign: "center",
-                    filter: "blur(0px)",
-                    opacity: 1,
-                    fontSize:"50px"
-                }}>
+                <div ref={helloRef} className="hello" style={{ position: "absolute", right: "-50%", zIndex: 10, textAlign: "center", filter: "blur(0px)", opacity: 1, fontSize:"50px", zoom:1 }}>
                     <p>HELLO! WELCOME TO MY PORTFOLIO.</p>
                     <p>HERE I SHOWCASE MY WORKS</p>
                     <p>AND PROJECTS I&apos;VE BEEN INVOLVED WITH,</p>
                     <p>SO PLEASE ENJOY EXPLORING THEM!</p>
                 </div>
-                    <div className="about-content" ref={testRef} style={{ position: "absolute", right: "-50%", top: "0", width: "50%", height: "100%",
-                            padding: "5%", boxSizing: "border-box", display: "flex", flexDirection: "column", backgroundColor: "white", zIndex:"11" }}>
-                        <h2 style={{ marginBottom: "20px", fontSize: "2.5em" }}>About Us</h2>
+                    <div className="about-content" ref={testRef} style={{ position: "absolute", right: "-50%", top: "0", width: "50%", height: "100%", padding: "5%", boxSizing: "border-box", display: "flex", flexDirection: "column", backgroundColor: "white", zIndex:"11" }}>
+                        <h2 style={{ marginBottom: "20px", fontSize: "2.5em" }}>About Me</h2>
                         <p style={{ marginBottom: "15px", fontSize: "1.1em", lineHeight: "1.6" }}>
                             We are a creative team dedicated to bringing innovative ideas to life. Our passion for technology and design drives us to create unique digital experiences.
                         </p>
@@ -260,12 +249,9 @@ export default function Home() {
                         <p style={{ fontSize: "3em", lineHeight: "1.6" }}>
                             With expertise in 3D modeling, web development, and user experience design, we strive to push the boundaries of what’s possible in the digital realm.
                         </p>
-
+                        <div><Link href="/about" onClick={(e) => handleLinkClick(e, '/about')}>View More</Link></div>
                     </div>
                 </section>
-
-
-
 
                 <section id="works">
                     <div className="works__wrapper">

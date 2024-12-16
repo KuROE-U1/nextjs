@@ -64,41 +64,39 @@ loader.load(
     modelGroup.position.set(-0.25, 0, 0);
 
 // 出現アニメーション
-gsap.fromTo(
-    modelGroup.position,
+gsap.fromTo(modelGroup.position,
     { x: -2 },
     {
-      x: -0.25,
-      scrollTrigger: {
+    x: -0.25,
+    scrollTrigger: {
         trigger: mountRef.current,
         start: "top+=70% center",
         end: "bottom+=50% center",
         scrub: true,
-        // markers: true,
-      },
-      ease: "none",
+    },
+    ease: "none",
     }
-  );
+);
 
   // 初期回転アニメーション
   gsap.fromTo(
     model.rotation,
     {
-      x: -Math.PI / 9,
-      y: -Math.PI / 6,
-      z: -Math.PI / 9,
+        x: -Math.PI / 9,
+        y: -Math.PI / 6,
+        z: -Math.PI / 9,
     },
     {
-      x: -Math.PI / 18,
-      y: -Math.PI / 9,
-      z: -Math.PI / 18,
-      scrollTrigger: {
+    x: -Math.PI / 18,
+    y: -Math.PI / 9,
+    z: -Math.PI / 18,
+    scrollTrigger: {
         trigger: mountRef.current,
         start: "top+=70% center",
         end: "bottom+=50% center",
         scrub: true,
-      },
-      ease: "none",
+    },
+    ease: "none",
     }
   );
 
