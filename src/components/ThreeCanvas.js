@@ -80,7 +80,7 @@ camera.lookAt(new THREE.Vector3(0, 0, 0));  // モデルの中心を見つめる
           scrollTrigger: {
             trigger: mountRef.current,
             start: "top+=100% bottom", // 3Dモデルが表示される開始位置（Aboutセクションが表示される位置）
-            end: "bottom top", // 終了位置（Aboutセクションがスクロールされていなくなる位置）
+            end: "bottom+=100% top", // 終了位置（Aboutセクションがスクロールされていなくなる位置）
             scrub: true, // スクロールに合わせてアニメーションを同期
             markers: true, // マーカーを表示してデバッグ
           },

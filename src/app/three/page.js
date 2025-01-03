@@ -54,7 +54,7 @@ const ThreePage = () => {
         <h1>Top Section</h1>
       </section>
 
-      <section ref={aboutRef} style={{ height: '200vh', backgroundColor: '#e0e0e0', position: 'relative', overflow: 'hidden' }}>
+      <section ref={aboutRef} style={{ height: '300vh', backgroundColor: '#e0e0e0', position: 'relative', overflow: 'hidden' }}>
         <div ref={modelContainerRef} style={{ 
           position: 'absolute', 
           width: '100%', 
